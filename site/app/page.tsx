@@ -9,8 +9,8 @@ import Navbar from "./Navbar";
    ════════════════════════════════════════════════════ */
 
 const brokerLink = "https://dashboard.genesisfxmarkets.com/auth/register?ref=FRADEL185";
-const courseLink = "https://buy.stripe.com/14k2bnf256Oh0gwdQQ";
-const managementLink = "https://buy.stripe.com/3cI14n7Og2rn6g00Vhao804";
+const courseLink = "https://buy.stripe.com/3cI14n7Og2rn6g00Vhao804";
+const managementLink = "https://buy.stripe.com/14k2bnf256Oh0gwdQQ";
 
 /* -- Chart path (upward growth curve) -- */
 const chartPath = "M0,85 C30,82 55,78 80,72 C105,66 130,58 160,48 C190,38 220,28 260,20 C300,12 340,7 380,4 C420,2 450,1 480,0";
