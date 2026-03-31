@@ -1,0 +1,190 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #FAFAFA;
+  --bg-elevated: #FFFFFF;
+  --panel: #FFFFFF;
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.03);
+  --card-shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.06), 0 8px 32px rgba(0, 0, 0, 0.04);
+  --text: #0A0A0A;
+  --text-secondary: #4A4A4A;
+  --muted: #8A8A8A;
+  --gold: #C9A84E;
+  --gold-light: #D4B96A;
+  --gold-dim: rgba(201, 168, 78, 0.08);
+  --gold-glow: rgba(201, 168, 78, 0.12);
+  --trust-blue: #3B82C4;
+  --border: #EAEAEA;
+  --border-light: #F0F0F0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+  border-color: var(--border);
+}
+
+a {
+  text-decoration: none;
+}
+
+/* -- Gold gradient text -- */
+.text-gold {
+  background: linear-gradient(135deg, #B8972F 0%, #C9A84E 45%, #D4B96A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* -- Card panel -- */
+.card-panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  box-shadow: var(--card-shadow);
+}
+
+/* -- Step number -- */
+.step-num {
+  font-size: 5.5rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  background: linear-gradient(180deg, rgba(201, 168, 78, 0.35) 0%, rgba(201, 168, 78, 0.08) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* -- Chart draw -- */
+@keyframes chart-draw {
+  from { stroke-dashoffset: 800; }
+  to { stroke-dashoffset: 0; }
+}
+
+.chart-line {
+  stroke-dasharray: 800;
+  stroke-dashoffset: 800;
+  animation: chart-draw 2.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+/* -- Gold shimmer sweep on buttons -- */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.gold-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.gold-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 70%
+  );
+  transform: translateX(-100%);
+  transition: none;
+}
+
+.gold-btn:hover::after {
+  animation: shimmer 0.7s ease-in-out;
+}
+
+/* -- Feature card hover lift -- */
+.feature-card {
+  transition: transform 0.4s cubic-bezier(0.22, 0.9, 0.36, 1),
+              box-shadow 0.4s cubic-bezier(0.22, 0.9, 0.36, 1),
+              border-color 0.4s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--card-shadow-hover);
+  border-color: rgba(201, 168, 78, 0.2);
+}
+
+/* -- Ticker scroll -- */
+@keyframes ticker-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.ticker-scroll {
+  animation: ticker-scroll 30s linear infinite;
+}
+
+/* -- Stat value counter feel -- */
+.stat-value {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+/* -- Horizontal gold rule -- */
+.gold-rule {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(201, 168, 78, 0.15) 50%, transparent 100%);
+}
+
+/* -- Section alternating background -- */
+.section-alt {
+  background: #F4F4F4;
+}
+
+/* -- Scrolled navbar -- */
+.navbar-scrolled {
+  background: rgba(255, 255, 255, 0.92) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* -- Selection color -- */
+::selection {
+  background: rgba(201, 168, 78, 0.2);
+  color: #0A0A0A;
+}
+
+/* -- Scrollbar (webkit) -- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(201, 168, 78, 0.2);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(201, 168, 78, 0.35);
+}
+
+/* -- Premium badge gradient -- */
+.premium-badge {
+  background: linear-gradient(135deg, #C9A84E 0%, #D4B96A 100%);
+}

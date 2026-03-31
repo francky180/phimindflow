@@ -1,0 +1,37 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(NODE_OPTIONS=\"--max-old-space-size=4096\" npx next build)",
+      "Bash(npx next:*)",
+      "Bash(bash install.sh)",
+      "Read(//c/Users/franc/.claude/skills/market/**)",
+      "Read(//c/Users/franc/.claude/skills/**)",
+      "Bash(winget install:*)",
+      "Bash(py --version)",
+      "Bash(export PATH=\"/c/Users/franc/AppData/Local/Programs/Python/Python312:/c/Users/franc/AppData/Local/Programs/Python/Python312/Scripts:$PATH\")",
+      "Bash(pip --version)",
+      "Bash(pip install:*)",
+      "Bash(export PATH=/c/Users/franc/AppData/Local/Programs/Python/Python312:/c/Users/franc/AppData/Local/Programs/Python/Python312/Scripts:$PATH)",
+      "Bash(pip list:*)",
+      "Bash(npm run:*)",
+      "Read(//c/Users/franc/.claude/**)",
+      "Read(//c/Users/franc/ai-tools/oh-my-claudecode/**)",
+      "Bash(npm list:*)",
+      "Read(//c/Users/franc/ai-tools/ai-marketing-claude/**)",
+      "Read(//c/Users/franc/ai-tools/ai-marketing-claude/skills/**)",
+      "Read(//c/Users/franc/ai-tools/ai-marketing-claude/market/**)",
+      "Bash(python3 \"C:/Users/franc/ai-tools/ui-ux-pro-max-skill/src/ui-ux-pro-max/scripts/search.py\" \"fintech dark premium\" --domain style -n 3)",
+      "WebFetch(domain:apple.com)",
+      "Bash(python3:*)",
+      "Read(//c/Users/franc/ai-tools/ui-ux-pro-max-skill/src/ui-ux-pro-max/data/**)",
+      "Read(//c/Users/franc/ai-tools/ui-ux-pro-max-skill/src/ui-ux-pro-max/scripts/**)",
+      "Bash(omc --help)",
+      "Bash(npm -v)",
+      "Bash(git --version)",
+      "Bash(claude --version)",
+      "Bash(git -C C:/Users/franc/Projects/websites/phimindflow-site remote -v)",
+      "Bash(git -C C:/Users/franc/Projects/websites/phimindflow-site/site remote -v)",
+      "Bash(git -C C:/Users/franc/Projects/websites/phimindflow-site/site branch -a)"
+    ]
+  }
+}
