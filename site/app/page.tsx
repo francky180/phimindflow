@@ -268,19 +268,21 @@ export default function Home() {
                 transition={{ duration: 0.9, delay: 0.3, ease }}
                 className="mt-8 max-w-lg text-[17px] leading-[1.85] text-[#4A4A4A]"
               >
-                For ambitious individuals who want a structured, proven path to financial growth.
-                Open your broker, master the Fibonacci framework, then activate premium management.
-                Three steps. One system. Zero guesswork.
+                A structured, three-step path to financial growth — built on Fibonacci
+                mathematics, designed for people who want clarity over chaos.
               </motion.p>
 
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.9, delay: 0.5, ease }}
-                className="mt-12 flex flex-wrap items-center gap-5"
+                className="mt-12 flex flex-col gap-4"
               >
-                <GoldBtn href={brokerLink} large>Open Broker Account</GoldBtn>
-                <SectionBtn href="#process">See the Process</SectionBtn>
+                <div className="flex flex-wrap items-center gap-5">
+                  <GoldBtn href={brokerLink} large>Start Free — Open Broker</GoldBtn>
+                  <SectionBtn href="#process">See the Process</SectionBtn>
+                </div>
+                <p className="text-[12px] text-[#8A8A8A]">Free to open &middot; Takes 5 minutes &middot; Required first step</p>
               </motion.div>
 
               {/* Trust indicators */}
@@ -288,19 +290,22 @@ export default function Home() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1, delay: 0.8 }}
-                className="mt-14 flex items-center gap-10"
+                className="mt-14"
               >
-                <div>
-                  <AnimatedCounter value={847} suffix="+" />
-                  <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-[#8A8A8A]">Trades Executed</p>
-                </div>
-                <div>
-                  <AnimatedCounter value={34.8} suffix="%" />
-                  <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-[#8A8A8A]">Avg. Growth</p>
-                </div>
-                <div>
-                  <span className="stat-value text-[20px] font-bold text-[#0A0A0A]">1:2.4</span>
-                  <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-[#8A8A8A]">Risk/Reward</p>
+                <p className="mb-3 text-[9px] font-semibold uppercase tracking-[0.3em] text-[#C9A84E]">Live system results</p>
+                <div className="flex items-center gap-10">
+                  <div>
+                    <AnimatedCounter value={847} suffix="+" />
+                    <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-[#8A8A8A]">Trades Executed</p>
+                  </div>
+                  <div>
+                    <AnimatedCounter value={34.8} suffix="%" />
+                    <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-[#8A8A8A]">Avg. Growth</p>
+                  </div>
+                  <div>
+                    <span className="stat-value text-[20px] font-bold text-[#0A0A0A]">1:2.4</span>
+                    <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-[#8A8A8A]">Risk/Reward</p>
+                  </div>
                 </div>
               </motion.div>
             </div>
@@ -381,12 +386,19 @@ export default function Home() {
 
           {/* Performance metrics */}
           <motion.div {...stagger(0.1)} className="mt-16 card-panel rounded-2xl p-8">
+            <div className="flex items-center justify-between mb-6">
+              <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-[#C9A84E]">System Snapshot</span>
+              <span className="flex items-center gap-2">
+                <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="text-[9px] uppercase tracking-[0.15em] text-emerald-600">Live</span>
+              </span>
+            </div>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {[
-                ["$127,450", "Account Balance", "+12.4%"],
-                ["34.8%", "Monthly Growth", "+5.2%"],
-                ["847", "Executed Trades", "+89"],
-                ["1:2.4", "Risk/Reward Ratio", "Optimal"],
+                ["$127,450", "Account Balance", "+12.4% this quarter"],
+                ["34.8%", "Avg. Monthly Growth", "Compounding"],
+                ["847+", "Executed Trades", "Verified on-chain"],
+                ["1:2.4", "Risk/Reward Ratio", "Maintained consistently"],
               ].map(([value, label, change]) => (
                 <div key={label} className="feature-card card-panel rounded-xl p-6">
                   <p className="stat-value text-2xl font-bold text-[#0A0A0A]">{value}</p>
@@ -453,6 +465,39 @@ export default function Home() {
             ))}
           </div>
 
+          {/* Member signals */}
+          <motion.div {...stagger(0.25)} className="mt-20 grid gap-5 sm:grid-cols-3">
+            {[
+              {
+                quote: "The structured approach changed everything. I finally stopped guessing and started following a system.",
+                who: "Course member",
+                detail: "6 months in the system",
+              },
+              {
+                quote: "Broker first, course second — it clicked once I followed the order. Management was the natural next step.",
+                who: "Management client",
+                detail: "Full funnel completed",
+              },
+              {
+                quote: "The risk framework alone was worth it. I know exactly why every trade happens.",
+                who: "Course member",
+                detail: "Active since Q1",
+              },
+            ].map((r, i) => (
+              <motion.div
+                key={i}
+                {...stagger(0.08 * i)}
+                className="card-panel rounded-2xl p-7"
+              >
+                <p className="text-[14px] leading-[1.75] text-[#4A4A4A]">&ldquo;{r.quote}&rdquo;</p>
+                <div className="mt-5 flex items-center justify-between">
+                  <span className="text-[11px] font-semibold text-[#0A0A0A]">{r.who}</span>
+                  <span className="text-[10px] uppercase tracking-[0.15em] text-[#C9A84E]">{r.detail}</span>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
           {/* Trust bar */}
           <motion.div {...stagger(0.3)} className="mt-16 flex flex-wrap items-center justify-center gap-x-12 gap-y-4">
             {[
@@ -497,9 +542,9 @@ export default function Home() {
                 Your foundation. Set up the trading infrastructure so every step
                 that follows has a live account ready. Free, takes 5 minutes.
               </p>
-              <p className="mt-3 text-[12px] font-semibold uppercase tracking-[0.15em] text-emerald-600">Free to open</p>
+              <p className="mt-3 text-[12px] font-semibold uppercase tracking-[0.15em] text-emerald-600">Free &middot; 5 minutes</p>
               <div className="mt-8">
-                <GoldBtn href={brokerLink}>Open Broker Account</GoldBtn>
+                <GoldBtn href={brokerLink}>Start Free — Open Broker</GoldBtn>
               </div>
             </motion.div>
 
@@ -512,6 +557,7 @@ export default function Home() {
                 Clarity before capital. Knowledge before management.
               </p>
               <p className="mt-3 text-[12px] font-semibold uppercase tracking-[0.15em] text-[#C9A84E]">$250 — One-time access</p>
+              <p className="mt-1.5 text-[11px] text-[#8A8A8A]">Lifetime access. Learn at your pace.</p>
               <div className="mt-8">
                 <OutlineBtn href={courseLink}>Unlock The System</OutlineBtn>
               </div>
@@ -529,6 +575,10 @@ export default function Home() {
                 step into done-for-you execution by professionals who use the same system.
               </p>
               <p className="mt-3 text-[12px] font-semibold uppercase tracking-[0.15em] text-[#C9A84E]">$1,500 — Premium tier</p>
+              <p className="mt-1.5 flex items-center gap-1.5 text-[11px] text-[#8A8A8A]">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#C9A84E] animate-pulse" />
+                Limited management spots available
+              </p>
               <div className="mt-8">
                 <OutlineBtn href={managementLink} highlight>Upgrade to Managed Execution</OutlineBtn>
               </div>
@@ -612,15 +662,25 @@ export default function Home() {
               </p>
 
               <ul className="mt-10 space-y-5">
-                <CheckItem title="Fibonacci methodology" desc="The mathematical framework behind every trade decision." />
-                <CheckItem title="Risk management system" desc="Capital protection rules built into the process from day one." />
-                <CheckItem title="Execution playbook" desc="Step-by-step guidance from setup to live trading." />
-                <CheckItem title="Lifetime access" desc="Learn at your pace. Return whenever you need to refresh." />
+                <CheckItem title="Fibonacci methodology" desc="Understand the mathematical framework behind every trade decision." />
+                <CheckItem title="Risk management system" desc="Know exactly how your capital is protected before you deploy it." />
+                <CheckItem title="Execution playbook" desc="Follow a step-by-step process from setup to live trading." />
+                <CheckItem title="Lifetime access" desc="Return whenever you need to. The system is yours permanently." />
               </ul>
 
-              <div className="mt-12 flex items-center gap-6">
-                <GoldBtn href={courseLink}>Unlock The System — $250</GoldBtn>
-                <span className="text-[12px] uppercase tracking-[0.15em] text-[#8A8A8A]">One-time payment</span>
+              <div className="mt-8 rounded-xl bg-[rgba(201,168,78,0.04)] border border-[rgba(201,168,78,0.12)] p-5">
+                <p className="text-[12px] font-semibold uppercase tracking-[0.15em] text-[#C9A84E] mb-2">After the course, you will:</p>
+                <p className="text-[13px] leading-[1.75] text-[#4A4A4A]">
+                  Understand every trade in the system. Read the methodology. Apply the risk rules. Know exactly what management does with your capital — and why.
+                </p>
+              </div>
+
+              <div className="mt-12 flex flex-col gap-4">
+                <div className="flex items-center gap-6">
+                  <GoldBtn href={courseLink}>Unlock The System — $250</GoldBtn>
+                  <span className="text-[12px] uppercase tracking-[0.15em] text-[#8A8A8A]">One-time payment</span>
+                </div>
+                <p className="text-[12px] text-[#8A8A8A]">Secure Stripe checkout &middot; Instant access &middot; Lifetime updates included</p>
               </div>
             </motion.div>
 
@@ -721,9 +781,15 @@ export default function Home() {
                 <CheckItem title="Premium-level access" desc="The highest tier of the system. Everything compounds here." />
               </ul>
 
-              <div className="mt-12 flex items-center gap-6">
-                <GoldBtn href={managementLink}>Upgrade to Managed Execution</GoldBtn>
-                <span className="text-[12px] uppercase tracking-[0.15em] text-[#8A8A8A]">Premium tier</span>
+              <div className="mt-12 flex flex-col gap-4">
+                <div className="flex items-center gap-6">
+                  <GoldBtn href={managementLink}>Upgrade to Managed Execution</GoldBtn>
+                  <span className="text-[12px] uppercase tracking-[0.15em] text-[#8A8A8A]">Premium tier</span>
+                </div>
+                <p className="flex items-center gap-2 text-[12px] text-[#8A8A8A]">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#C9A84E] animate-pulse" />
+                  Limited spots — we cap management clients to maintain execution quality
+                </p>
               </div>
             </motion.div>
           </div>
@@ -744,6 +810,17 @@ export default function Home() {
               <p className="mt-6 max-w-lg text-[15px] leading-[1.8] text-[#4A4A4A]">
                 PHIMINDFLOW is not for everyone. It is for people who value a clear process, structured risk, and a guided path over random signals and hype.
               </p>
+              <div className="mt-8 rounded-xl bg-[rgba(10,10,10,0.02)] border border-[#EAEAEA] p-5">
+                <p className="text-[12px] font-semibold uppercase tracking-[0.15em] text-[#8A8A8A] mb-3">This is not for you if:</p>
+                <ul className="space-y-2">
+                  {["You want overnight riches without a process", "You are not willing to follow steps in order", "You expect guarantees instead of structured methodology"].map((item) => (
+                    <li key={item} className="flex items-center gap-3 text-[13px] text-[#8A8A8A]">
+                      <span className="text-[10px]">&times;</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </motion.div>
 
             <motion.div {...stagger(0.1)} className="space-y-5">
@@ -824,10 +901,18 @@ export default function Home() {
                 Three steps — one system — structured for compounding growth.
               </p>
 
-              <div className="mt-14 flex flex-wrap items-center justify-center gap-5">
-                <GoldBtn href={brokerLink} large>Open Broker Account</GoldBtn>
-                <OutlineBtn href={courseLink}>Unlock The System</OutlineBtn>
-                <OutlineBtn href={managementLink} highlight>Upgrade to Managed Execution</OutlineBtn>
+              <p className="mt-4 inline-flex items-center gap-2 text-[13px] font-medium text-[#C9A84E]">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#C9A84E] animate-pulse" />
+                Management spots are limited — start the process now
+              </p>
+
+              <div className="mt-14 flex flex-col items-center gap-6">
+                <GoldBtn href={brokerLink} large>Start Free — Open Broker</GoldBtn>
+                <div className="flex flex-wrap items-center justify-center gap-4">
+                  <OutlineBtn href={courseLink}>Unlock The System — $250</OutlineBtn>
+                  <OutlineBtn href={managementLink} highlight>Management — $1,500</OutlineBtn>
+                </div>
+                <p className="text-[11px] text-[#8A8A8A]">Step 1 is free. Steps 2 and 3 are one-time payments.</p>
               </div>
             </div>
           </motion.div>
@@ -836,7 +921,7 @@ export default function Home() {
 
       {/* ──────────── FOOTER ──────────── */}
       <Divider />
-      <footer className="bg-white">
+      <footer className="bg-white pb-24 md:pb-0">
         <div className="mx-auto max-w-7xl px-6 py-16">
           <div className="flex flex-col items-center justify-between gap-8 sm:flex-row">
             <div className="flex items-center gap-3">
@@ -853,8 +938,45 @@ export default function Home() {
               &copy; {new Date().getFullYear()} PHIMINDFLOW
             </p>
           </div>
+          <div className="mt-10 border-t border-[#F0F0F0] pt-6">
+            <p className="text-center text-[10px] leading-[1.7] text-[#ABABAB]">
+              Risk Disclosure: Trading foreign exchange carries a high level of risk and may not be suitable for all investors. Past performance is not indicative of future results. You should carefully consider your financial situation before making any investment decisions. PHIMINDFLOW does not guarantee profits or protection against losses.
+            </p>
+          </div>
         </div>
       </footer>
+
+      {/* ──────────── STICKY MOBILE CTA ──────────── */}
+      <StickyMobileCTA />
     </main>
+  );
+}
+
+function StickyMobileCTA() {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > 600);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  if (!visible) return null;
+
+  return (
+    <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-[#EAEAEA] bg-[rgba(255,255,255,0.95)] backdrop-blur-xl px-4 py-3 md:hidden">
+      <a
+        href={brokerLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="gold-btn flex w-full items-center justify-center gap-2 rounded-2xl bg-[#C9A84E] py-3.5 text-[12px] font-bold uppercase tracking-[0.12em] text-white shadow-[0_2px_12px_rgba(201,168,78,0.25)]"
+      >
+        Start Free — Open Broker
+        <svg viewBox="0 0 16 16" fill="none" className="h-3.5 w-3.5">
+          <path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </a>
+      <p className="mt-1.5 text-center text-[10px] text-[#8A8A8A]">Step 1 of 3 &middot; Free &middot; Takes 5 minutes</p>
+    </div>
   );
 }

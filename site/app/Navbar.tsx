@@ -64,7 +64,7 @@ export default function Navbar() {
           whileTap={{ scale: 0.98 }}
           className="gold-btn hidden rounded-full bg-[#C9A84E] px-6 py-2.5 text-[11px] font-bold uppercase tracking-[0.18em] text-white transition-shadow duration-300 hover:shadow-[0_4px_20px_rgba(201,168,78,0.3)] md:inline-flex"
         >
-          Open Broker Account
+          Start Free
         </motion.a>
 
         {/* Mobile toggle */}
@@ -104,9 +104,10 @@ export default function Navbar() {
                 href={brokerLink}
                 target="_blank"
                 rel="noreferrer"
+                onClick={() => setOpen(false)}
                 className="gold-btn mt-2 inline-flex w-fit rounded-full bg-[#C9A84E] px-6 py-3 text-[11px] font-bold uppercase tracking-[0.18em] text-white"
               >
-                Open Broker Account
+                Start Free — Open Broker
               </a>
             </div>
           </motion.nav>

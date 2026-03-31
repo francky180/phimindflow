@@ -1,6 +1,7 @@
 # PHIMINDFLOW Optimization Report
 
 Date: 2026-03-30
+Last Re-verified: 2026-03-30 (Phase 3 full audit)
 
 ---
 
@@ -95,8 +96,8 @@ All external links open in new tabs with `target="_blank"` and `rel="noopener no
 - **Next.js Build**: Successful (compiled in ~20s, all static pages generated)
 - **TypeScript**: No errors
 - **Broker link**: Correct (https://dashboard.genesisfxmarkets.com/auth/register?ref=FRADEL185)
-- **Course link**: Correct (https://buy.stripe.com/14k2bnf256Oh0gwdQQ)
-- **Management link**: Correct (https://buy.stripe.com/3cI14n7Og2rn6g00Vhao804)
+- **Course link ($250)**: Correct (https://buy.stripe.com/3cI14n7Og2rn6g00Vhao804)
+- **Management link ($1,500)**: Correct (https://buy.stripe.com/14k2bnf256Oh0gwdQQ)
 - **External links**: All open in new tab
 - **No placeholder href="#"**: Confirmed
 - **Mobile nav**: Working (hamburger menu with all 4 links + broker CTA)
@@ -107,6 +108,22 @@ All external links open in new tabs with `target="_blank"` and `rel="noopener no
 ## Deployment Status
 
 Committed and pushed to remote.
+
+---
+
+## Re-verification (2026-03-30 Full Audit)
+
+| Check | Result |
+|-------|--------|
+| `npm run lint` | CLEAN — 0 errors, 0 warnings |
+| `npm run build` | SUCCESS — compiled in 7.7s (Turbopack), all static pages generated |
+| Git branch | `main` — up to date with origin/main |
+| Funnel order | Broker → Course → Management — CONFIRMED |
+| Stripe links | Correct after fix (commit a9faece) |
+| CTA labels | Clear and consistent |
+| Design consistency | Premium light theme, gold accents, clean typography |
+| No placeholder links | CONFIRMED |
+| No tracked node_modules/.next | CONFIRMED |
 
 ---
 
