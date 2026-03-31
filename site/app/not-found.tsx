@@ -2,20 +2,20 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <main className="flex min-h-screen items-center justify-center bg-white text-[var(--text)]">
+    <main className="flex min-h-screen items-center justify-center bg-white text-[#0A0A0A]">
       <div className="text-center px-6">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.4em] text-[var(--gold)] mb-5">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.4em] text-[#C9A84E] mb-5">
           Page Not Found
         </p>
-        <h1 className="text-[clamp(4rem,12vw,8rem)] font-extrabold leading-[0.95] tracking-[-0.04em] text-[var(--text)]">
+        <h1 className="text-[clamp(4rem,12vw,8rem)] font-extrabold leading-[0.95] tracking-[-0.04em] text-[#0A0A0A]">
           4<span className="text-gold">0</span>4
         </h1>
-        <p className="mt-6 max-w-md mx-auto text-[16px] leading-[1.8] text-[var(--text-secondary)]">
+        <p className="mt-6 max-w-md mx-auto text-[16px] leading-[1.8] text-[#4A4A4A]">
           This page does not exist. Head back to the system.
         </p>
         <Link
           href="/"
-          className="gold-btn mt-10 inline-flex items-center gap-2.5 rounded-2xl bg-[var(--gold)] px-8 py-4 text-[13px] font-bold uppercase tracking-[0.15em] text-white shadow-[0_2px_12px_rgba(201,168,78,0.25)] transition-shadow duration-300 hover:shadow-[0_4px_24px_rgba(201,168,78,0.35)]"
+          className="gold-btn mt-10 inline-flex items-center gap-2.5 rounded-2xl bg-[#C9A84E] px-8 py-4 text-[13px] font-bold uppercase tracking-[0.15em] text-white shadow-[0_2px_12px_rgba(201,168,78,0.25)] transition-shadow duration-300 hover:shadow-[0_4px_24px_rgba(201,168,78,0.35)]"
         >
           Back to PHIMINDFLOW
           <svg viewBox="0 0 16 16" fill="none" className="h-3.5 w-3.5">

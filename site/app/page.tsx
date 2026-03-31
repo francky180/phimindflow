@@ -31,7 +31,7 @@ const stagger = (d: number) => ({ ...reveal, transition: { duration: 0.9, delay:
 
 function Label({ children }: { children: React.ReactNode }) {
   return (
-    <p className="mb-5 text-[11px] font-semibold uppercase tracking-[0.4em] text-[var(--gold)]">
+    <p className="mb-5 text-[11px] font-semibold uppercase tracking-[0.4em] text-[#C9A84E]">
       {children}
     </p>
   );
@@ -46,7 +46,7 @@ function GoldBtn({ href, children, large }: { href: string; children: React.Reac
       whileHover={{ scale: 1.03, y: -2 }}
       whileTap={{ scale: 0.97 }}
       transition={{ type: "spring", stiffness: 400, damping: 20 }}
-      className={`gold-btn relative inline-flex items-center gap-2.5 rounded-2xl bg-[var(--gold)] font-bold uppercase tracking-[0.12em] text-white shadow-[0_2px_12px_rgba(201,168,78,0.25)] transition-shadow duration-300 hover:shadow-[0_4px_24px_rgba(201,168,78,0.35)] ${
+      className={`gold-btn relative inline-flex items-center gap-2.5 rounded-2xl bg-[#C9A84E] font-bold uppercase tracking-[0.12em] text-white shadow-[0_2px_12px_rgba(201,168,78,0.25)] transition-shadow duration-300 hover:shadow-[0_4px_24px_rgba(201,168,78,0.35)] ${
         large ? "px-10 py-5 text-[14px]" : "px-8 py-4 text-[13px]"
       }`}
     >
@@ -69,8 +69,8 @@ function OutlineBtn({ href, children, highlight }: { href: string; children: Rea
       transition={{ type: "spring", stiffness: 400, damping: 20 }}
       className={`inline-flex items-center gap-2.5 rounded-2xl border px-8 py-4 text-[13px] font-semibold uppercase tracking-[0.12em] transition-all duration-300 ${
         highlight
-          ? "border-[var(--gold)]/40 text-[var(--gold)] hover:border-[var(--gold)] hover:shadow-[0_4px_20px_rgba(201,168,78,0.15)] hover:bg-[var(--gold)]/5"
-          : "border-[var(--border)] text-[var(--text-secondary)] hover:border-[var(--gold)]/40 hover:text-[var(--gold)] hover:bg-[var(--gold)]/5"
+          ? "border-[rgba(201,168,78,0.4)] text-[#C9A84E] hover:border-[#C9A84E] hover:shadow-[0_4px_20px_rgba(201,168,78,0.15)] hover:bg-[rgba(201,168,78,0.05)]"
+          : "border-[#EAEAEA] text-[#4A4A4A] hover:border-[rgba(201,168,78,0.4)] hover:text-[#C9A84E] hover:bg-[rgba(201,168,78,0.05)]"
       }`}
     >
       {children}
@@ -82,7 +82,7 @@ function SectionBtn({ href, children }: { href: string; children: React.ReactNod
   return (
     <a
       href={href}
-      className="inline-flex items-center gap-2.5 rounded-2xl border border-[var(--border)] px-8 py-4 text-[13px] font-semibold uppercase tracking-[0.12em] text-[var(--text-secondary)] transition-all duration-300 hover:border-[var(--gold)]/40 hover:text-[var(--gold)] hover:bg-[var(--gold)]/5"
+      className="inline-flex items-center gap-2.5 rounded-2xl border border-[#EAEAEA] px-8 py-4 text-[13px] font-semibold uppercase tracking-[0.12em] text-[#4A4A4A] transition-all duration-300 hover:border-[rgba(201,168,78,0.4)] hover:text-[#C9A84E] hover:bg-[rgba(201,168,78,0.05)]"
     >
       {children}
     </a>
@@ -96,7 +96,7 @@ function Divider() {
 /* -- Simple SVG icons (24x24 stroke-based) -- */
 function Icon({ d }: { d: string }) {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6 text-[var(--gold)]">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6 text-[#C9A84E]">
       <path d={d} />
     </svg>
   );
@@ -111,7 +111,6 @@ const icons = {
   layers: "M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5",
   zap: "M13 2L3 14h9l-1 8 10-12h-9l1-8",
   lock: "M17 11V7a5 5 0 0 0-10 0v4M5 11h14a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2z",
-  check: "M20 6L9 17l-5-5",
 };
 
 /* -- Animated counter (scroll-triggered) -- */
@@ -138,7 +137,7 @@ function AnimatedCounter({ value, suffix = "", prefix = "" }: { value: number; s
   }, [spring, value]);
 
   return (
-    <span ref={ref} className="stat-value text-[20px] font-bold text-[var(--text)]">
+    <span ref={ref} className="stat-value text-[20px] font-bold text-[#0A0A0A]">
       {prefix}{display}{suffix}
     </span>
   );
@@ -159,11 +158,11 @@ function TrustTicker() {
   const doubled = [...items, ...items];
 
   return (
-    <div className="relative overflow-hidden border-y border-[var(--border-light)] bg-white/60 py-4">
+    <div className="relative overflow-hidden border-y border-[#F0F0F0] bg-[rgba(255,255,255,0.6)] py-4">
       <div className="ticker-scroll flex items-center gap-12 whitespace-nowrap">
         {doubled.map((item, i) => (
-          <span key={i} className="flex items-center gap-4 text-[10px] font-semibold uppercase tracking-[0.3em] text-[var(--muted)]">
-            <span className="h-1 w-1 rounded-full bg-[var(--gold)]" />
+          <span key={i} className="flex items-center gap-4 text-[10px] font-semibold uppercase tracking-[0.3em] text-[#8A8A8A]">
+            <span className="h-1 w-1 rounded-full bg-[#C9A84E]" />
             {item}
           </span>
         ))}
@@ -185,11 +184,11 @@ function FaqItem({ q, a, delay }: { q: string; a: string; delay: number }) {
         onClick={() => setOpen(!open)}
         className="flex w-full items-center justify-between p-7 text-left"
       >
-        <h3 className="text-[15px] font-bold text-[var(--text)] pr-4">{q}</h3>
+        <h3 className="text-[15px] font-bold text-[#0A0A0A] pr-4">{q}</h3>
         <motion.span
           animate={{ rotate: open ? 45 : 0 }}
           transition={{ duration: 0.3, ease }}
-          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[var(--border)] text-[var(--muted)]"
+          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#EAEAEA] text-[#8A8A8A]"
         >
           <svg viewBox="0 0 16 16" fill="none" className="h-3.5 w-3.5">
             <path d="M8 3v10M3 8h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
@@ -202,7 +201,7 @@ function FaqItem({ q, a, delay }: { q: string; a: string; delay: number }) {
         transition={{ duration: 0.35, ease }}
         className="overflow-hidden"
       >
-        <p className="px-7 pb-7 text-[14px] leading-[1.75] text-[var(--text-secondary)]">{a}</p>
+        <p className="px-7 pb-7 text-[14px] leading-[1.75] text-[#4A4A4A]">{a}</p>
       </motion.div>
     </motion.div>
   );
@@ -212,14 +211,14 @@ function FaqItem({ q, a, delay }: { q: string; a: string; delay: number }) {
 function CheckItem({ title, desc }: { title: string; desc: string }) {
   return (
     <li className="flex gap-4">
-      <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[var(--gold)]/10">
+      <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[rgba(201,168,78,0.1)]">
         <svg viewBox="0 0 12 12" fill="none" className="h-3 w-3">
           <path d="M2.5 6l2.5 2.5 4.5-5" stroke="#C9A84E" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </span>
       <div>
-        <p className="text-[14px] font-semibold text-[var(--text)]">{title}</p>
-        <p className="mt-0.5 text-[13px] text-[var(--text-secondary)]">{desc}</p>
+        <p className="text-[14px] font-semibold text-[#0A0A0A]">{title}</p>
+        <p className="mt-0.5 text-[13px] text-[#4A4A4A]">{desc}</p>
       </div>
     </li>
   );
@@ -236,13 +235,13 @@ export default function Home() {
   const heroScale = useTransform(scrollYProgress, [0, 1], [1, 0.97]);
 
   return (
-    <main id="top" className="min-h-screen bg-[var(--bg)] text-[var(--text)] overflow-x-hidden">
+    <main id="top" className="min-h-screen bg-[#FAFAFA] text-[#0A0A0A] overflow-x-hidden">
       <Navbar />
 
       {/* ──────────── HERO ──────────── */}
       <motion.section ref={heroRef} style={{ opacity: heroOpacity, scale: heroScale }} className="relative min-h-screen overflow-hidden bg-white">
         {/* Subtle ambient gradient */}
-        <div className="pointer-events-none absolute left-1/2 top-[30%] -translate-x-1/2 -translate-y-1/2 h-[700px] w-[700px] rounded-full bg-[var(--gold)] opacity-[0.04] blur-[200px]" />
+        <div className="pointer-events-none absolute left-1/2 top-[30%] -translate-x-1/2 -translate-y-1/2 h-[700px] w-[700px] rounded-full bg-[#C9A84E] opacity-[0.04] blur-[200px]" />
 
         <div className="relative mx-auto flex min-h-screen max-w-7xl items-center px-6 pt-32 pb-20">
           <div className="grid w-full gap-16 lg:grid-cols-[1.3fr_0.7fr] lg:items-center">
@@ -256,7 +255,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1.1, delay: 0.1, ease }}
-                className="text-[clamp(2.8rem,7vw,5.2rem)] font-extrabold leading-[1.02] tracking-[-0.03em] text-[var(--text)]"
+                className="text-[clamp(2.8rem,7vw,5.2rem)] font-extrabold leading-[1.02] tracking-[-0.03em] text-[#0A0A0A]"
               >
                 Build wealth with
                 <br />
@@ -267,7 +266,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.9, delay: 0.3, ease }}
-                className="mt-8 max-w-lg text-[17px] leading-[1.85] text-[var(--text-secondary)]"
+                className="mt-8 max-w-lg text-[17px] leading-[1.85] text-[#4A4A4A]"
               >
                 For ambitious individuals who want a structured, proven path to financial growth.
                 Open your broker, master the Fibonacci framework, then activate premium management.
@@ -293,15 +292,15 @@ export default function Home() {
               >
                 <div>
                   <AnimatedCounter value={847} suffix="+" />
-                  <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-[var(--muted)]">Trades Executed</p>
+                  <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-[#8A8A8A]">Trades Executed</p>
                 </div>
                 <div>
                   <AnimatedCounter value={34.8} suffix="%" />
-                  <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-[var(--muted)]">Avg. Growth</p>
+                  <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-[#8A8A8A]">Avg. Growth</p>
                 </div>
                 <div>
-                  <span className="stat-value text-[20px] font-bold text-[var(--text)]">1:2.4</span>
-                  <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-[var(--muted)]">Risk/Reward</p>
+                  <span className="stat-value text-[20px] font-bold text-[#0A0A0A]">1:2.4</span>
+                  <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-[#8A8A8A]">Risk/Reward</p>
                 </div>
               </motion.div>
             </div>
@@ -314,9 +313,9 @@ export default function Home() {
               className="hidden lg:block"
             >
               <div className="card-panel rounded-2xl p-6">
-                <div className="rounded-xl bg-[var(--bg)] p-5">
+                <div className="rounded-xl bg-[#FAFAFA] p-5">
                   <div className="flex items-center justify-between mb-6">
-                    <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-[var(--gold)]">Portfolio Overview</span>
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-[#C9A84E]">Portfolio Overview</span>
                     <span className="flex items-center gap-2">
                       <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
                       <span className="text-[9px] uppercase tracking-[0.15em] text-emerald-600">Live</span>
@@ -329,8 +328,8 @@ export default function Home() {
                       ["847", "Trades", "+89"],
                     ].map(([val, label, delta]) => (
                       <div key={label} className="card-panel rounded-xl p-4 text-center">
-                        <p className="stat-value text-lg font-bold text-[var(--text)]">{val}</p>
-                        <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-[var(--muted)]">{label}</p>
+                        <p className="stat-value text-lg font-bold text-[#0A0A0A]">{val}</p>
+                        <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-[#8A8A8A]">{label}</p>
                         <p className="mt-1.5 text-[10px] font-semibold text-emerald-600">{delta}</p>
                       </div>
                     ))}
@@ -367,15 +366,15 @@ export default function Home() {
       </motion.section>
 
       {/* ──────────── CREDIBILITY / POSITIONING ──────────── */}
-      <section id="credibility" className="bg-[var(--bg)]">
+      <section id="credibility" className="bg-[#FAFAFA]">
         <div className="mx-auto max-w-7xl px-6 py-28">
           <motion.div {...reveal} className="text-center">
             <Label>Why PHIMINDFLOW</Label>
-            <h2 className="mx-auto max-w-2xl text-[clamp(2rem,4.5vw,3.2rem)] font-bold leading-[1.08] tracking-[-0.025em] text-[var(--text)]">
+            <h2 className="mx-auto max-w-2xl text-[clamp(2rem,4.5vw,3.2rem)] font-bold leading-[1.08] tracking-[-0.025em] text-[#0A0A0A]">
               Built for serious results.{" "}
               <span className="text-gold">Not speculation.</span>
             </h2>
-            <p className="mx-auto mt-5 max-w-lg text-[15px] leading-[1.8] text-[var(--text-secondary)]">
+            <p className="mx-auto mt-5 max-w-lg text-[15px] leading-[1.8] text-[#4A4A4A]">
               Every component follows the golden ratio. Structure replaces guesswork. Real metrics replace promises. A system you can verify, not just trust.
             </p>
           </motion.div>
@@ -390,20 +389,20 @@ export default function Home() {
                 ["1:2.4", "Risk/Reward Ratio", "Optimal"],
               ].map(([value, label, change]) => (
                 <div key={label} className="feature-card card-panel rounded-xl p-6">
-                  <p className="stat-value text-2xl font-bold text-[var(--text)]">{value}</p>
-                  <p className="mt-2 text-[11px] uppercase tracking-[0.2em] text-[var(--muted)]">{label}</p>
+                  <p className="stat-value text-2xl font-bold text-[#0A0A0A]">{value}</p>
+                  <p className="mt-2 text-[11px] uppercase tracking-[0.2em] text-[#8A8A8A]">{label}</p>
                   <p className="mt-3 text-[12px] font-semibold text-emerald-600">{change}</p>
                 </div>
               ))}
             </div>
 
             {/* Chart */}
-            <div className="mt-8 rounded-xl bg-[var(--bg)] p-6 border border-[var(--border-light)]">
+            <div className="mt-8 rounded-xl bg-[#FAFAFA] p-6 border border-[#F0F0F0]">
               <div className="mb-4 flex items-center justify-between">
-                <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-[var(--muted)]">Growth Trajectory</span>
+                <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-[#8A8A8A]">Growth Trajectory</span>
                 <div className="flex items-center gap-2">
-                  <span className="h-[3px] w-4 rounded-full bg-[var(--gold)]" />
-                  <span className="text-[10px] text-[var(--muted)]">Performance</span>
+                  <span className="h-[3px] w-4 rounded-full bg-[#C9A84E]" />
+                  <span className="text-[10px] text-[#8A8A8A]">Performance</span>
                 </div>
               </div>
               <svg viewBox="0 0 480 90" className="w-full h-auto">
@@ -445,11 +444,11 @@ export default function Home() {
                 {...stagger(0.06 * i)}
                 className="feature-card card-panel rounded-2xl p-8 group cursor-default"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--gold)]/10 transition-all duration-500 group-hover:bg-[var(--gold)]/20 group-hover:scale-110">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[rgba(201,168,78,0.1)] transition-all duration-500 group-hover:bg-[rgba(201,168,78,0.2)] group-hover:scale-110">
                   <Icon d={icon} />
                 </div>
-                <h3 className="mt-6 text-[16px] font-bold tracking-tight text-[var(--text)]">{title}</h3>
-                <p className="mt-3 text-[14px] leading-[1.75] text-[var(--text-secondary)] transition-colors duration-500 group-hover:text-[var(--text)]">{desc}</p>
+                <h3 className="mt-6 text-[16px] font-bold tracking-tight text-[#0A0A0A]">{title}</h3>
+                <p className="mt-3 text-[14px] leading-[1.75] text-[#4A4A4A] transition-colors duration-500 group-hover:text-[#0A0A0A]">{desc}</p>
               </motion.div>
             ))}
           </div>
@@ -462,7 +461,7 @@ export default function Home() {
               "Structured Risk Management",
               "Lifetime Course Access",
             ].map((item) => (
-              <span key={item} className="flex items-center gap-3 text-[11px] uppercase tracking-[0.2em] text-[var(--muted)]">
+              <span key={item} className="flex items-center gap-3 text-[11px] uppercase tracking-[0.2em] text-[#8A8A8A]">
                 <svg viewBox="0 0 12 12" fill="none" className="h-3 w-3 shrink-0">
                   <path d="M2.5 6l2.5 2.5 4.5-5" stroke="#C9A84E" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
@@ -479,11 +478,11 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-6 py-28">
           <motion.div {...reveal} className="text-center">
             <Label>Your Three-Step Path</Label>
-            <h2 className="mx-auto max-w-2xl text-[clamp(2rem,4.5vw,3.2rem)] font-bold leading-[1.08] tracking-[-0.025em] text-[var(--text)]">
+            <h2 className="mx-auto max-w-2xl text-[clamp(2rem,4.5vw,3.2rem)] font-bold leading-[1.08] tracking-[-0.025em] text-[#0A0A0A]">
               Follow the sequence.{" "}
-              <span className="text-[var(--muted)]">Skip nothing.</span>
+              <span className="text-[#8A8A8A]">Skip nothing.</span>
             </h2>
-            <p className="mx-auto mt-6 max-w-lg text-[15px] leading-[1.8] text-[var(--text-secondary)]">
+            <p className="mx-auto mt-6 max-w-lg text-[15px] leading-[1.8] text-[#4A4A4A]">
               Each step builds on the last. This is a system, not a menu.
               The order exists because each phase prepares you for the next.
             </p>
@@ -493,8 +492,8 @@ export default function Home() {
             {/* Step 1 -- Broker */}
             <motion.div {...stagger(0.05)} className="feature-card card-panel rounded-2xl p-10 group">
               <span className="step-num">01</span>
-              <h3 className="mt-5 text-xl font-bold tracking-tight text-[var(--text)]">Open Your Broker Account</h3>
-              <p className="mt-4 text-[14px] leading-[1.75] text-[var(--text-secondary)]">
+              <h3 className="mt-5 text-xl font-bold tracking-tight text-[#0A0A0A]">Open Your Broker Account</h3>
+              <p className="mt-4 text-[14px] leading-[1.75] text-[#4A4A4A]">
                 Your foundation. Set up the trading infrastructure so every step
                 that follows has a live account ready. Free, takes 5 minutes.
               </p>
@@ -507,29 +506,29 @@ export default function Home() {
             {/* Step 2 -- Course */}
             <motion.div {...stagger(0.12)} className="feature-card card-panel rounded-2xl p-10 group">
               <span className="step-num">02</span>
-              <h3 className="mt-5 text-xl font-bold tracking-tight text-[var(--text)]">Unlock the System</h3>
-              <p className="mt-4 text-[14px] leading-[1.75] text-[var(--text-secondary)]">
+              <h3 className="mt-5 text-xl font-bold tracking-tight text-[#0A0A0A]">Unlock the System</h3>
+              <p className="mt-4 text-[14px] leading-[1.75] text-[#4A4A4A]">
                 Master the Fibonacci framework, risk rules, and execution process.
                 Clarity before capital. Knowledge before management.
               </p>
-              <p className="mt-3 text-[12px] font-semibold uppercase tracking-[0.15em] text-[var(--gold)]">$250 — One-time access</p>
+              <p className="mt-3 text-[12px] font-semibold uppercase tracking-[0.15em] text-[#C9A84E]">$250 — One-time access</p>
               <div className="mt-8">
                 <OutlineBtn href={courseLink}>Unlock The System</OutlineBtn>
               </div>
             </motion.div>
 
             {/* Step 3 -- Management (Premium) */}
-            <motion.div {...stagger(0.19)} className="feature-card card-panel rounded-2xl p-10 group border-[var(--gold)]/20 relative">
+            <motion.div {...stagger(0.19)} className="feature-card card-panel rounded-2xl p-10 group border-[rgba(201,168,78,0.2)] relative">
               <div className="absolute top-5 right-5 premium-badge rounded-full px-3 py-1">
                 <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-white">Premium</span>
               </div>
               <span className="step-num">03</span>
-              <h3 className="mt-5 text-xl font-bold tracking-tight text-[var(--text)]">Upgrade to Managed Execution</h3>
-              <p className="mt-4 text-[14px] leading-[1.75] text-[var(--text-secondary)]">
+              <h3 className="mt-5 text-xl font-bold tracking-tight text-[#0A0A0A]">Upgrade to Managed Execution</h3>
+              <p className="mt-4 text-[14px] leading-[1.75] text-[#4A4A4A]">
                 The premium tier. Once your account and course are in place,
                 step into done-for-you execution by professionals who use the same system.
               </p>
-              <p className="mt-3 text-[12px] font-semibold uppercase tracking-[0.15em] text-[var(--gold)]">$1,500 — Premium tier</p>
+              <p className="mt-3 text-[12px] font-semibold uppercase tracking-[0.15em] text-[#C9A84E]">$1,500 — Premium tier</p>
               <div className="mt-8">
                 <OutlineBtn href={managementLink} highlight>Upgrade to Managed Execution</OutlineBtn>
               </div>
@@ -545,16 +544,16 @@ export default function Home() {
           <div className="grid gap-20 lg:grid-cols-2 lg:items-center">
             <motion.div {...reveal}>
               <Label>Why This Order</Label>
-              <h2 className="max-w-lg text-[clamp(2rem,4.5vw,3.2rem)] font-bold leading-[1.08] tracking-[-0.025em] text-[var(--text)]">
+              <h2 className="max-w-lg text-[clamp(2rem,4.5vw,3.2rem)] font-bold leading-[1.08] tracking-[-0.025em] text-[#0A0A0A]">
                 The sequence is{" "}
                 <span className="text-gold">the system.</span>
               </h2>
-              <p className="mt-6 max-w-lg text-[15px] leading-[1.8] text-[var(--text-secondary)]">
+              <p className="mt-6 max-w-lg text-[15px] leading-[1.8] text-[#4A4A4A]">
                 Most people fail because they skip steps. They buy a course without
                 a broker. They want management without understanding the framework.
                 This system eliminates that chaos.
               </p>
-              <p className="mt-4 max-w-lg text-[15px] leading-[1.8] text-[var(--text-secondary)]">
+              <p className="mt-4 max-w-lg text-[15px] leading-[1.8] text-[#4A4A4A]">
                 The broker creates commitment. The course creates understanding.
                 Management becomes the natural next step — not a leap of faith.
               </p>
@@ -583,10 +582,10 @@ export default function Home() {
                   {...stagger(0.08 * i)}
                   className="feature-card card-panel rounded-2xl p-7 flex gap-6 items-start"
                 >
-                  <span className="text-3xl font-extrabold text-[var(--gold)]/30 shrink-0">{num}</span>
+                  <span className="text-3xl font-extrabold text-[rgba(201,168,78,0.3)] shrink-0">{num}</span>
                   <div>
-                    <h3 className="text-[15px] font-bold text-[var(--text)]">{title}</h3>
-                    <p className="mt-2 text-[13px] leading-[1.75] text-[var(--text-secondary)]">{desc}</p>
+                    <h3 className="text-[15px] font-bold text-[#0A0A0A]">{title}</h3>
+                    <p className="mt-2 text-[13px] leading-[1.75] text-[#4A4A4A]">{desc}</p>
                   </div>
                 </motion.div>
               ))}
@@ -602,11 +601,11 @@ export default function Home() {
           <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
             <motion.div {...reveal}>
               <Label>Step 2 — The Course</Label>
-              <h2 className="max-w-lg text-[clamp(2rem,4.5vw,3.2rem)] font-bold leading-[1.08] tracking-[-0.025em] text-[var(--text)]">
+              <h2 className="max-w-lg text-[clamp(2rem,4.5vw,3.2rem)] font-bold leading-[1.08] tracking-[-0.025em] text-[#0A0A0A]">
                 The complete{" "}
                 <span className="text-gold">Fibonacci framework.</span>
               </h2>
-              <p className="mt-6 max-w-lg text-[15px] leading-[1.8] text-[var(--text-secondary)]">
+              <p className="mt-6 max-w-lg text-[15px] leading-[1.8] text-[#4A4A4A]">
                 Not another theory course. This is the exact process — the Fibonacci
                 methodology, risk framework, and execution playbook used inside the live system.
                 You will know exactly what is happening with your capital and why.
@@ -621,7 +620,7 @@ export default function Home() {
 
               <div className="mt-12 flex items-center gap-6">
                 <GoldBtn href={courseLink}>Unlock The System — $250</GoldBtn>
-                <span className="text-[12px] uppercase tracking-[0.15em] text-[var(--muted)]">One-time payment</span>
+                <span className="text-[12px] uppercase tracking-[0.15em] text-[#8A8A8A]">One-time payment</span>
               </div>
             </motion.div>
 
@@ -630,11 +629,11 @@ export default function Home() {
               <div className="relative w-full max-w-md">
                 <div className="card-panel rounded-2xl p-8">
                   <div className="flex items-center gap-4 mb-8">
-                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[var(--gold)]/10">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[rgba(201,168,78,0.1)]">
                       <Icon d={icons.book} />
                     </div>
                     <div>
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[var(--gold)]">Course</p>
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#C9A84E]">Course</p>
                       <p className="text-2xl font-bold text-gold stat-value">$250</p>
                     </div>
                   </div>
@@ -647,11 +646,11 @@ export default function Home() {
                       "Entry and exit strategies",
                       "Lifetime access included",
                     ].map((item) => (
-                      <div key={item} className="flex items-center gap-3 rounded-xl bg-[var(--bg)] px-4 py-3 border border-[var(--border-light)]">
+                      <div key={item} className="flex items-center gap-3 rounded-xl bg-[#FAFAFA] px-4 py-3 border border-[#F0F0F0]">
                         <svg viewBox="0 0 12 12" fill="none" className="h-3 w-3 shrink-0">
                           <path d="M2.5 6l2.5 2.5 4.5-5" stroke="#C9A84E" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
-                        <span className="text-[13px] text-[var(--text-secondary)]">{item}</span>
+                        <span className="text-[13px] text-[#4A4A4A]">{item}</span>
                       </div>
                     ))}
                   </div>
@@ -670,16 +669,16 @@ export default function Home() {
             {/* Management visual card -- left on desktop */}
             <motion.div {...stagger(0.15)} className="order-2 lg:order-1 flex justify-center">
               <div className="relative w-full max-w-md">
-                <div className="card-panel rounded-2xl p-8 border-[var(--gold)]/20">
+                <div className="card-panel rounded-2xl p-8 border-[rgba(201,168,78,0.2)]">
                   <div className="absolute -top-3 left-8 premium-badge rounded-full px-4 py-1.5 shadow-[0_2px_12px_rgba(201,168,78,0.25)]">
                     <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white">Premium</span>
                   </div>
                   <div className="flex items-center gap-4 mb-8 mt-2">
-                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[var(--gold)]/10">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[rgba(201,168,78,0.1)]">
                       <Icon d={icons.layers} />
                     </div>
                     <div>
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[var(--gold)]">Management</p>
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[#C9A84E]">Management</p>
                       <p className="text-2xl font-bold text-gold stat-value">$1,500</p>
                     </div>
                   </div>
@@ -692,11 +691,11 @@ export default function Home() {
                       "Direct system access",
                       "Priority support included",
                     ].map((item) => (
-                      <div key={item} className="flex items-center gap-3 rounded-xl bg-[var(--bg)] px-4 py-3 border border-[var(--border-light)]">
+                      <div key={item} className="flex items-center gap-3 rounded-xl bg-[#FAFAFA] px-4 py-3 border border-[#F0F0F0]">
                         <svg viewBox="0 0 12 12" fill="none" className="h-3 w-3 shrink-0">
                           <path d="M2.5 6l2.5 2.5 4.5-5" stroke="#C9A84E" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
-                        <span className="text-[13px] text-[var(--text-secondary)]">{item}</span>
+                        <span className="text-[13px] text-[#4A4A4A]">{item}</span>
                       </div>
                     ))}
                   </div>
@@ -707,11 +706,11 @@ export default function Home() {
             {/* Management copy -- right on desktop */}
             <motion.div {...reveal} className="order-1 lg:order-2">
               <Label>Step 3 — Premium Management</Label>
-              <h2 className="max-w-lg text-[clamp(2rem,4.5vw,3.2rem)] font-bold leading-[1.08] tracking-[-0.025em] text-[var(--text)]">
+              <h2 className="max-w-lg text-[clamp(2rem,4.5vw,3.2rem)] font-bold leading-[1.08] tracking-[-0.025em] text-[#0A0A0A]">
                 Done-for-you{" "}
                 <span className="text-gold">execution.</span>
               </h2>
-              <p className="mt-6 max-w-lg text-[15px] leading-[1.8] text-[var(--text-secondary)]">
+              <p className="mt-6 max-w-lg text-[15px] leading-[1.8] text-[#4A4A4A]">
                 You know the system. You understand the framework. Now let professionals
                 execute it for you. Hands-off growth built on the foundation you already established.
               </p>
@@ -724,7 +723,7 @@ export default function Home() {
 
               <div className="mt-12 flex items-center gap-6">
                 <GoldBtn href={managementLink}>Upgrade to Managed Execution</GoldBtn>
-                <span className="text-[12px] uppercase tracking-[0.15em] text-[var(--muted)]">Premium tier</span>
+                <span className="text-[12px] uppercase tracking-[0.15em] text-[#8A8A8A]">Premium tier</span>
               </div>
             </motion.div>
           </div>
@@ -738,11 +737,11 @@ export default function Home() {
           <div className="grid gap-16 lg:grid-cols-2 lg:items-start">
             <motion.div {...reveal}>
               <Label>Is This For You</Label>
-              <h2 className="max-w-lg text-[clamp(2rem,4.5vw,3.2rem)] font-bold leading-[1.08] tracking-[-0.025em] text-[var(--text)]">
+              <h2 className="max-w-lg text-[clamp(2rem,4.5vw,3.2rem)] font-bold leading-[1.08] tracking-[-0.025em] text-[#0A0A0A]">
                 Built for people who{" "}
                 <span className="text-gold">want structure.</span>
               </h2>
-              <p className="mt-6 max-w-lg text-[15px] leading-[1.8] text-[var(--text-secondary)]">
+              <p className="mt-6 max-w-lg text-[15px] leading-[1.8] text-[#4A4A4A]">
                 PHIMINDFLOW is not for everyone. It is for people who value a clear process, structured risk, and a guided path over random signals and hype.
               </p>
             </motion.div>
@@ -759,14 +758,14 @@ export default function Home() {
                   className="feature-card card-panel rounded-2xl p-7"
                 >
                   <div className="flex gap-4 items-start">
-                    <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[var(--gold)]/10">
+                    <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[rgba(201,168,78,0.1)]">
                       <svg viewBox="0 0 12 12" fill="none" className="h-3 w-3">
                         <path d="M2.5 6l2.5 2.5 4.5-5" stroke="#C9A84E" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
                     </span>
                     <div>
-                      <h3 className="text-[15px] font-bold text-[var(--text)]">{title}</h3>
-                      <p className="mt-2 text-[13px] leading-[1.75] text-[var(--text-secondary)]">{desc}</p>
+                      <h3 className="text-[15px] font-bold text-[#0A0A0A]">{title}</h3>
+                      <p className="mt-2 text-[13px] leading-[1.75] text-[#4A4A4A]">{desc}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -782,9 +781,9 @@ export default function Home() {
         <div className="mx-auto max-w-3xl px-6 py-28">
           <motion.div {...reveal} className="text-center">
             <Label>FAQ</Label>
-            <h2 className="text-[clamp(2rem,4.5vw,3.2rem)] font-bold tracking-[-0.025em] text-[var(--text)]">
+            <h2 className="text-[clamp(2rem,4.5vw,3.2rem)] font-bold tracking-[-0.025em] text-[#0A0A0A]">
               Common questions.{" "}
-              <span className="text-[var(--muted)]">Clear answers.</span>
+              <span className="text-[#8A8A8A]">Clear answers.</span>
             </h2>
           </motion.div>
 
@@ -805,22 +804,22 @@ export default function Home() {
       </section>
 
       {/* ──────────── FINAL CTA ──────────── */}
-      <section className="bg-[var(--bg)]">
+      <section className="bg-[#FAFAFA]">
         <div className="mx-auto max-w-7xl px-6 py-28">
           <motion.div
             {...reveal}
-            className="relative overflow-hidden card-panel rounded-3xl border-[var(--gold)]/15 px-8 py-24 text-center sm:px-16"
+            className="relative overflow-hidden card-panel rounded-3xl border-[rgba(201,168,78,0.15)] px-8 py-24 text-center sm:px-16"
           >
             {/* Subtle ambient glow */}
-            <div className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 h-[400px] w-[600px] rounded-full bg-[var(--gold)] opacity-[0.04] blur-[160px]" />
+            <div className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 h-[400px] w-[600px] rounded-full bg-[#C9A84E] opacity-[0.04] blur-[160px]" />
 
             <div className="relative">
               <Label>Your Next Step</Label>
-              <h2 className="mx-auto max-w-2xl text-[clamp(2.2rem,5vw,3.8rem)] font-extrabold leading-[1.05] tracking-[-0.03em] text-[var(--text)]">
+              <h2 className="mx-auto max-w-2xl text-[clamp(2.2rem,5vw,3.8rem)] font-extrabold leading-[1.05] tracking-[-0.03em] text-[#0A0A0A]">
                 The system is ready.{" "}
                 <span className="text-gold">Are you?</span>
               </h2>
-              <p className="mx-auto mt-6 max-w-xl text-[16px] leading-[1.8] text-[var(--text-secondary)]">
+              <p className="mx-auto mt-6 max-w-xl text-[16px] leading-[1.8] text-[#4A4A4A]">
                 Open your broker account. Master the framework. Activate premium management.
                 Three steps — one system — structured for compounding growth.
               </p>
@@ -841,16 +840,16 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-6 py-16">
           <div className="flex flex-col items-center justify-between gap-8 sm:flex-row">
             <div className="flex items-center gap-3">
-              <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-[var(--gold)]/10 text-[var(--gold)] text-xs font-bold">&phi;</span>
+              <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-[rgba(201,168,78,0.1)] text-[#C9A84E] text-xs font-bold">&phi;</span>
               <p className="text-[11px] font-bold uppercase tracking-[0.4em] text-gold">PHIMINDFLOW</p>
             </div>
             <div className="flex items-center gap-8">
-              <a href="#process" className="text-[11px] uppercase tracking-[0.15em] text-[var(--muted)] transition-colors duration-300 hover:text-[var(--gold)]">Process</a>
-              <a href="#course" className="text-[11px] uppercase tracking-[0.15em] text-[var(--muted)] transition-colors duration-300 hover:text-[var(--gold)]">Course</a>
-              <a href="#management" className="text-[11px] uppercase tracking-[0.15em] text-[var(--muted)] transition-colors duration-300 hover:text-[var(--gold)]">Management</a>
-              <a href="#faq" className="text-[11px] uppercase tracking-[0.15em] text-[var(--muted)] transition-colors duration-300 hover:text-[var(--gold)]">FAQ</a>
+              <a href="#process" className="text-[11px] uppercase tracking-[0.15em] text-[#8A8A8A] transition-colors duration-300 hover:text-[#C9A84E]">Process</a>
+              <a href="#course" className="text-[11px] uppercase tracking-[0.15em] text-[#8A8A8A] transition-colors duration-300 hover:text-[#C9A84E]">Course</a>
+              <a href="#management" className="text-[11px] uppercase tracking-[0.15em] text-[#8A8A8A] transition-colors duration-300 hover:text-[#C9A84E]">Management</a>
+              <a href="#faq" className="text-[11px] uppercase tracking-[0.15em] text-[#8A8A8A] transition-colors duration-300 hover:text-[#C9A84E]">FAQ</a>
             </div>
-            <p className="text-[11px] tracking-wide text-[var(--muted)]">
+            <p className="text-[11px] tracking-wide text-[#8A8A8A]">
               &copy; {new Date().getFullYear()} PHIMINDFLOW
             </p>
           </div>
