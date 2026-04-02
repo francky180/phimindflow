@@ -46,8 +46,8 @@
 
 ## Funnel Links (Verified — matches site/app/constants.ts)
 1. Broker: https://dashboard.genesisfxmarkets.com/auth/register?ref=FRADEL185
-2. Course ($250): https://buy.stripe.com/14k2bnf256Oh0gwdQQ
-3. Management ($1,500): https://buy.stripe.com/3cI14n7Og2rn6g00Vhao804
+2. Course ($250): https://buy.stripe.com/3cI14n7Og2rn6g00Vhao804
+3. Management ($1,500): https://buy.stripe.com/14k2bnf256Oh0gwdQQ
 
 ## Pending
 - Custom domain (phimindflow.com) not yet configured on Vercel

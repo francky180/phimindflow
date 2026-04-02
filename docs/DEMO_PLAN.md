@@ -42,8 +42,8 @@ Open http://localhost:3000 and scroll through:
 
 Right-click each CTA button → "Copy link address":
 1. Broker → must contain `genesisfxmarkets.com/auth/register?ref=FRADEL185`
-2. Course → must contain `buy.stripe.com/14k2bnf256Oh0gwdQQ`
-3. Management → must contain `buy.stripe.com/3cI14n7Og2rn6g00Vhao804`
+2. Course → must contain `buy.stripe.com/3cI14n7Og2rn6g00Vhao804`
+3. Management → must contain `buy.stripe.com/14k2bnf256Oh0gwdQQ`
 
 ### Part 4: Mobile View (20 seconds)
 

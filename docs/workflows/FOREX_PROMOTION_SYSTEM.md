@@ -11,8 +11,8 @@ All links are centralized in: `site/app/constants.ts`
 | Step | Product | Price | Link |
 |------|---------|-------|------|
 | 1 | Broker Signup (Genesis FX) | FREE | https://dashboard.genesisfxmarkets.com/auth/register?ref=FRADEL185 |
-| 2 | Course Purchase | $250 | https://buy.stripe.com/14k2bnf256Oh0gwdQQ |
-| 3 | Management Purchase | $1,500 | https://buy.stripe.com/3cI14n7Og2rn6g00Vhao804 |
+| 2 | Course Purchase | $250 | https://buy.stripe.com/3cI14n7Og2rn6g00Vhao804 |
+| 3 | Management Purchase | $1,500 | https://buy.stripe.com/14k2bnf256Oh0gwdQQ |
 
 ## Promotion Funnel Order
 
