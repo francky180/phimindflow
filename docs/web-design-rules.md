@@ -3,11 +3,11 @@
 Design this website like a world-class luxury conversion funnel.
 
 Visual direction:
-- premium light theme (off-white #FAFAFA)
-- white cards with subtle shadows
-- near-black text (#0A0A0A)
-- restrained gold accents (#C9A84E)
-- elegant typography
+- premium dark theme (#0A0A0A base)
+- dark cards (#141414) with subtle shadows
+- off-white text (#F5F5F5) / muted gray (#A0A0A0)
+- restrained gold accents (#C9A84E, #D4B96A)
+- elegant typography with tight kerning
 - spacious layout with breathing room
 - strong alignment
 - clean grid structure

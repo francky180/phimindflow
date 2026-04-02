@@ -5,11 +5,11 @@ PHIMINDFLOW
 
 Visual style:
 - Premium
-- Light (off-white #FAFAFA)
+- Dark (#0A0A0A base, #111111 / #0E0E0E sections)
 - Minimal
 - Modern
 - Controlled luxury
-- White cards / near-black text / restrained gold (#C9A84E)
+- Dark cards (#141414) / off-white text (#F5F5F5) / restrained gold (#C9A84E)
 
 Tone:
 - Direct

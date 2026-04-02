@@ -2,9 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-
-const brokerLink =
-  "https://dashboard.genesisfxmarkets.com/auth/register?ref=FRADEL185";
+import { brokerLink } from "./constants";
 
 const links = [
   ["Process", "#process"],
@@ -48,7 +46,7 @@ export default function Navbar() {
             <a
               key={label}
               href={href}
-              className="relative text-[11px] font-semibold uppercase tracking-[0.18em] text-[#4A4A4A] transition-colors duration-300 hover:text-[#C9A84E] after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-[rgba(201,168,78,0.4)] after:transition-all after:duration-300 hover:after:w-full"
+              className="relative text-[11px] font-semibold uppercase tracking-[0.18em] text-[#A0A0A0] transition-colors duration-300 hover:text-[#C9A84E] after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-[rgba(201,168,78,0.4)] after:transition-all after:duration-300 hover:after:w-full"
             >
               {label}
             </a>
@@ -73,9 +71,9 @@ export default function Navbar() {
           className="flex flex-col gap-[5px] md:hidden"
           aria-label="Toggle menu"
         >
-          <span className={`block h-[1.5px] w-5 bg-[#0A0A0A] transition-all duration-300 ${open ? "translate-y-[6px] rotate-45" : ""}`} />
-          <span className={`block h-[1.5px] w-5 bg-[#0A0A0A] transition-all duration-300 ${open ? "opacity-0" : ""}`} />
-          <span className={`block h-[1.5px] w-5 bg-[#0A0A0A] transition-all duration-300 ${open ? "-translate-y-[6px] -rotate-45" : ""}`} />
+          <span className={`block h-[1.5px] w-5 bg-[#F5F5F5] transition-all duration-300 ${open ? "translate-y-[6px] rotate-45" : ""}`} />
+          <span className={`block h-[1.5px] w-5 bg-[#F5F5F5] transition-all duration-300 ${open ? "opacity-0" : ""}`} />
+          <span className={`block h-[1.5px] w-5 bg-[#F5F5F5] transition-all duration-300 ${open ? "-translate-y-[6px] -rotate-45" : ""}`} />
         </button>
       </div>
 
@@ -87,7 +85,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="overflow-hidden border-t border-[#EAEAEA] bg-[rgba(255,255,255,0.95)] backdrop-blur-xl md:hidden"
+            className="overflow-hidden border-t border-[#1E1E1E] bg-[rgba(10,10,10,0.95)] backdrop-blur-xl md:hidden"
           >
             <div className="flex flex-col gap-5 px-6 py-8">
               {links.map(([label, href]) => (
@@ -95,7 +93,7 @@ export default function Navbar() {
                   key={label}
                   href={href}
                   onClick={() => setOpen(false)}
-                  className="text-sm font-semibold uppercase tracking-[0.15em] text-[#4A4A4A] transition hover:text-[#C9A84E]"
+                  className="text-sm font-semibold uppercase tracking-[0.15em] text-[#A0A0A0] transition hover:text-[#C9A84E]"
                 >
                   {label}
                 </a>

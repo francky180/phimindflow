@@ -2,15 +2,15 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <main className="flex min-h-screen items-center justify-center bg-white text-[#0A0A0A]">
+    <main className="flex min-h-screen items-center justify-center bg-[#0A0A0A] text-[#F5F5F5]">
       <div className="text-center px-6">
         <p className="text-[11px] font-semibold uppercase tracking-[0.4em] text-[#C9A84E] mb-5">
           Page Not Found
         </p>
-        <h1 className="text-[clamp(4rem,12vw,8rem)] font-extrabold leading-[0.95] tracking-[-0.04em] text-[#0A0A0A]">
+        <h1 className="text-[clamp(4rem,12vw,8rem)] font-extrabold leading-[0.95] tracking-[-0.04em] text-[#F5F5F5]">
           4<span className="text-gold">0</span>4
         </h1>
-        <p className="mt-6 max-w-md mx-auto text-[16px] leading-[1.8] text-[#4A4A4A]">
+        <p className="mt-6 max-w-md mx-auto text-[16px] leading-[1.8] text-[#A0A0A0]">
           This page does not exist. Head back to the system.
         </p>
         <Link

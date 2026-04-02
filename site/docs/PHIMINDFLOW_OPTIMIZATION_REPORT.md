@@ -96,8 +96,8 @@ All external links open in new tabs with `target="_blank"` and `rel="noopener no
 - **Next.js Build**: Successful (compiled in ~20s, all static pages generated)
 - **TypeScript**: No errors
 - **Broker link**: Correct (https://dashboard.genesisfxmarkets.com/auth/register?ref=FRADEL185)
-- **Course link ($250)**: Correct (https://buy.stripe.com/3cI14n7Og2rn6g00Vhao804)
-- **Management link ($1,500)**: Correct (https://buy.stripe.com/14k2bnf256Oh0gwdQQ)
+- **Course link ($250)**: Correct (https://buy.stripe.com/14k2bnf256Oh0gwdQQ)
+- **Management link ($1,500)**: Correct (https://buy.stripe.com/3cI14n7Og2rn6g00Vhao804)
 - **External links**: All open in new tab
 - **No placeholder href="#"**: Confirmed
 - **Mobile nav**: Working (hamburger menu with all 4 links + broker CTA)
@@ -121,7 +121,7 @@ Committed and pushed to remote.
 | Funnel order | Broker → Course → Management — CONFIRMED |
 | Stripe links | Correct after fix (commit a9faece) |
 | CTA labels | Clear and consistent |
-| Design consistency | Premium light theme, gold accents, clean typography |
+| Design consistency | Premium dark theme, gold accents, clean typography |
 | No placeholder links | CONFIRMED |
 | No tracked node_modules/.next | CONFIRMED |
 
