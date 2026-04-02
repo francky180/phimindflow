@@ -9,10 +9,13 @@ import {
 } from "remotion";
 
 const GOLD = "#C9A84E";
+const GOLD_LIGHT = "#D4B96A";
 const DARK = "#0A0A0A";
-const BG = "#FAFAFA";
-const MUTED = "#4A4A4A";
-const LIGHT_GOLD = "rgba(201,168,78,0.1)";
+const PANEL = "#141414";
+const ELEVATED = "#111111";
+const TEXT = "#F5F5F5";
+const MUTED = "#A0A0A0";
+const SUBTLE = "#666666";
 
 /* ── Reusable fade-in ── */
 function FadeIn({
@@ -48,12 +51,24 @@ function SceneTitle() {
   return (
     <AbsoluteFill
       style={{
-        background: "white",
+        background: DARK,
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "column",
       }}
     >
+      {/* Ambient glow */}
+      <div
+        style={{
+          position: "absolute",
+          width: 600,
+          height: 600,
+          borderRadius: "50%",
+          background: GOLD,
+          opacity: 0.06,
+          filter: "blur(180px)",
+        }}
+      />
       <div
         style={{
           opacity,
@@ -61,6 +76,7 @@ function SceneTitle() {
           display: "flex",
           alignItems: "center",
           gap: 24,
+          position: "relative",
         }}
       >
         <div
@@ -68,7 +84,7 @@ function SceneTitle() {
             width: 72,
             height: 72,
             borderRadius: 16,
-            background: LIGHT_GOLD,
+            background: "rgba(201,168,78,0.12)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -85,7 +101,7 @@ function SceneTitle() {
             fontSize: 48,
             fontWeight: 800,
             letterSpacing: "0.3em",
-            background: `linear-gradient(135deg, #B8972F, ${GOLD}, #D4B96A)`,
+            background: `linear-gradient(135deg, #B8972F, ${GOLD}, ${GOLD_LIGHT})`,
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
           }}
@@ -115,7 +131,7 @@ function SceneProblem() {
   return (
     <AbsoluteFill
       style={{
-        background: BG,
+        background: ELEVATED,
         justifyContent: "center",
         alignItems: "center",
         padding: 120,
@@ -141,7 +157,7 @@ function SceneProblem() {
           style={{
             fontSize: 56,
             fontWeight: 800,
-            color: DARK,
+            color: TEXT,
             textAlign: "center",
             lineHeight: 1.15,
             maxWidth: 1000,
@@ -176,26 +192,26 @@ function SceneSteps() {
       num: "01",
       title: "Open Broker Account",
       desc: "Free. 5 minutes. Your foundation.",
-      color: "#22C55E",
+      accent: "#22C55E",
     },
     {
       num: "02",
-      title: "Get Started",
-      desc: "Starter tier. Fibonacci framework. Full access.",
-      color: GOLD,
+      title: "Unlock the System",
+      desc: "$250. Fibonacci framework. Lifetime access.",
+      accent: GOLD,
     },
     {
       num: "03",
-      title: "Go Pro",
-      desc: "Premium tier. Done-for-you execution.",
-      color: "#D4B96A",
+      title: "Managed Execution",
+      desc: "$1,500. Done-for-you. Premium tier.",
+      accent: GOLD_LIGHT,
     },
   ];
 
   return (
     <AbsoluteFill
       style={{
-        background: "white",
+        background: DARK,
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
@@ -221,13 +237,13 @@ function SceneSteps() {
           style={{
             fontSize: 52,
             fontWeight: 800,
-            color: DARK,
+            color: TEXT,
             textAlign: "center",
             marginBottom: 60,
           }}
         >
           Follow the sequence.{" "}
-          <span style={{ color: "#8A8A8A" }}>Skip nothing.</span>
+          <span style={{ color: SUBTLE }}>Skip nothing.</span>
         </h2>
       </FadeIn>
       <div style={{ display: "flex", gap: 40, width: "100%" }}>
@@ -236,10 +252,10 @@ function SceneSteps() {
             <div
               style={{
                 flex: 1,
-                background: BG,
+                background: PANEL,
                 borderRadius: 20,
                 padding: 48,
-                border: "1px solid #EAEAEA",
+                border: "1px solid #1E1E1E",
                 minWidth: 340,
               }}
             >
@@ -247,7 +263,7 @@ function SceneSteps() {
                 style={{
                   fontSize: 64,
                   fontWeight: 800,
-                  color: step.color,
+                  color: step.accent,
                   opacity: 0.35,
                   lineHeight: 1,
                 }}
@@ -258,7 +274,7 @@ function SceneSteps() {
                 style={{
                   fontSize: 26,
                   fontWeight: 700,
-                  color: DARK,
+                  color: TEXT,
                   marginTop: 16,
                 }}
               >
@@ -287,7 +303,7 @@ function SceneWhyOrder() {
   return (
     <AbsoluteFill
       style={{
-        background: BG,
+        background: ELEVATED,
         justifyContent: "center",
         alignItems: "center",
         padding: 120,
@@ -313,7 +329,7 @@ function SceneWhyOrder() {
           style={{
             fontSize: 52,
             fontWeight: 800,
-            color: DARK,
+            color: TEXT,
             textAlign: "center",
             lineHeight: 1.15,
             maxWidth: 900,
@@ -340,14 +356,14 @@ function SceneWhyOrder() {
             <div
               style={{
                 flex: 1,
-                background: "white",
+                background: PANEL,
                 borderRadius: 16,
                 padding: 40,
-                border: "1px solid #EAEAEA",
+                border: "1px solid #1E1E1E",
                 minWidth: 300,
               }}
             >
-              <h3 style={{ fontSize: 22, fontWeight: 700, color: DARK }}>
+              <h3 style={{ fontSize: 22, fontWeight: 700, color: TEXT }}>
                 {title}
               </h3>
               <p
@@ -380,7 +396,7 @@ function SceneResults() {
   return (
     <AbsoluteFill
       style={{
-        background: "white",
+        background: DARK,
         justifyContent: "center",
         alignItems: "center",
         padding: 120,
@@ -406,13 +422,13 @@ function SceneResults() {
           style={{
             fontSize: 52,
             fontWeight: 800,
-            color: DARK,
+            color: TEXT,
             textAlign: "center",
             marginBottom: 56,
           }}
         >
           Real metrics.{" "}
-          <span style={{ color: "#8A8A8A" }}>Not promises.</span>
+          <span style={{ color: SUBTLE }}>Not promises.</span>
         </h2>
       </FadeIn>
       <div style={{ display: "flex", gap: 48 }}>
@@ -435,7 +451,7 @@ function SceneResults() {
                 style={{
                   fontSize: 72,
                   fontWeight: 800,
-                  color: DARK,
+                  color: TEXT,
                   fontVariantNumeric: "tabular-nums",
                 }}
               >
@@ -444,7 +460,7 @@ function SceneResults() {
               <p
                 style={{
                   fontSize: 16,
-                  color: "#8A8A8A",
+                  color: SUBTLE,
                   letterSpacing: "0.2em",
                   textTransform: "uppercase",
                   marginTop: 8,
@@ -469,13 +485,26 @@ function SceneCTA() {
   return (
     <AbsoluteFill
       style={{
-        background: "white",
+        background: DARK,
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "column",
         padding: 100,
       }}
     >
+      {/* Ambient glow */}
+      <div
+        style={{
+          position: "absolute",
+          width: 500,
+          height: 500,
+          borderRadius: "50%",
+          background: GOLD,
+          opacity: 0.05,
+          filter: "blur(160px)",
+          top: "30%",
+        }}
+      />
       <FadeIn>
         <p
           style={{
@@ -485,6 +514,7 @@ function SceneCTA() {
             textTransform: "uppercase",
             fontWeight: 600,
             marginBottom: 24,
+            position: "relative",
           }}
         >
           Your Next Step
@@ -495,9 +525,10 @@ function SceneCTA() {
           style={{
             fontSize: 60,
             fontWeight: 800,
-            color: DARK,
+            color: TEXT,
             textAlign: "center",
             lineHeight: 1.1,
+            position: "relative",
           }}
         >
           The system is ready.
@@ -516,6 +547,8 @@ function SceneCTA() {
             display: "flex",
             alignItems: "center",
             gap: 16,
+            boxShadow: "0 4px 24px rgba(201,168,78,0.3)",
+            position: "relative",
           }}
         >
           <span
@@ -537,8 +570,9 @@ function SceneCTA() {
           style={{
             marginTop: 32,
             fontSize: 18,
-            color: MUTED,
+            color: SUBTLE,
             textAlign: "center",
+            position: "relative",
           }}
         >
           phimindflow.com
