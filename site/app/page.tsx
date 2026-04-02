@@ -377,7 +377,7 @@ export default function Home() {
               <span className="text-gold">Not speculation.</span>
             </h2>
             <p className="mx-auto mt-5 max-w-lg text-[15px] leading-[1.8] text-[#A0A0A0]">
-              Every component follows the golden ratio. Structure replaces guesswork. Real metrics replace promises. A system you can verify, not just trust.
+              Structure replaces guesswork. Real metrics replace promises. A Fibonacci-based system you can verify, not just trust.
             </p>
           </motion.div>
 
@@ -394,7 +394,7 @@ export default function Home() {
               {[
                 ["$127,450", "Account Balance", "+12.4% this quarter"],
                 ["34.8%", "Avg. Monthly Growth", "Compounding"],
-                ["847+", "Executed Trades", "Verified on-chain"],
+                ["847+", "Executed Trades", "Live tracked"],
                 ["1:2.4", "Risk/Reward Ratio", "Maintained consistently"],
               ].map(([value, label, change]) => (
                 <div key={label} className="feature-card card-panel rounded-xl p-6">
@@ -445,7 +445,7 @@ export default function Home() {
               [icons.shield, "Capital Protection First", "Risk management is built into every step. Your capital is protected by structured rules, not gut feelings."],
               [icons.chart, "Transparent Performance", "Real metrics from real execution. No projections, no backtests — verifiable results you can audit."],
               [icons.book, "Complete Education System", "The course delivers the full framework — process, methodology, and execution playbook before you deploy capital."],
-              [icons.trending, "Compounding Architecture", "Each step compounds on the last. Broker feeds into course, course feeds into management. The system multiplies."],
+              [icons.trending, "Compounding Architecture", "Each step compounds on the last. Broker feeds into course, course feeds into management — structured growth at every stage."],
               [icons.zap, "Done-For-You Management", "Hands-off execution built on your established foundation. The premium tier for those who want results without the screen time."],
             ] as const).map(([icon, title, desc], i) => (
               <motion.div
