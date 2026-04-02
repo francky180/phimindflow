@@ -254,9 +254,9 @@ export default function Home() {
                 transition={{ duration: 1.1, delay: 0.1, ease }}
                 className="text-[clamp(2.8rem,7vw,5.2rem)] font-extrabold leading-[1.02] tracking-[-0.03em] text-[#F5F5F5]"
               >
-                Build wealth with
+                Structured wealth.
                 <br />
-                <span className="text-gold">mathematical precision.</span>
+                <span className="text-gold">Zero guesswork.</span>
               </motion.h1>
 
               <motion.p
@@ -265,8 +265,8 @@ export default function Home() {
                 transition={{ duration: 0.9, delay: 0.3, ease }}
                 className="mt-8 max-w-lg text-[17px] leading-[1.85] text-[#A0A0A0]"
               >
-                A structured, three-step path to financial growth — built on Fibonacci
-                mathematics, designed for people who want clarity over chaos.
+                A three-step Fibonacci system that turns structure into returns.
+                Broker. Course. Management. Each step builds on the last.
               </motion.p>
 
               <motion.div
