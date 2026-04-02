@@ -539,7 +539,7 @@ export default function Home() {
                 Your foundation. Set up the trading infrastructure so every step
                 that follows has a live account ready. Free, takes 5 minutes.
               </p>
-              <p className="mt-3 text-[12px] font-semibold uppercase tracking-[0.15em] text-emerald-600">Free &middot; 5 minutes</p>
+              <p className="mt-3 text-[12px] font-semibold uppercase tracking-[0.15em] text-emerald-600">Free &middot; 5 minutes &middot; Genesis FX Markets</p>
               <div className="mt-8">
                 <GoldBtn href={brokerLink}>Start Free — Open Broker</GoldBtn>
               </div>
