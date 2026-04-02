@@ -653,7 +653,7 @@ export default function Home() {
                 <span className="text-gold">Fibonacci framework.</span>
               </h2>
               <p className="mt-6 max-w-lg text-[15px] leading-[1.8] text-[#A0A0A0]">
-                Not another theory course. This is the exact process — the Fibonacci
+                This is the operating manual for the entire system — the Fibonacci
                 methodology, risk framework, and execution playbook used inside the live system.
                 You will know exactly what is happening with your capital and why.
               </p>
@@ -775,7 +775,7 @@ export default function Home() {
               <ul className="mt-10 space-y-5">
                 <CheckItem title="Professional execution" desc="Your capital managed using the same Fibonacci system you learned." />
                 <CheckItem title="Built on your foundation" desc="Your broker account, your knowledge — now amplified by experts." />
-                <CheckItem title="Premium-level access" desc="The highest tier of the system. Everything compounds here." />
+                <CheckItem title="Compounding returns" desc="At the system's historical growth rate, management clients typically recover their investment within the first cycle." />
               </ul>
 
               <div className="mt-12 flex flex-col gap-4">
@@ -785,7 +785,7 @@ export default function Home() {
                 </div>
                 <p className="flex items-center gap-2 text-[12px] text-[#666666]">
                   <span className="h-1.5 w-1.5 rounded-full bg-[#C9A84E] animate-pulse" />
-                  Limited spots — we cap management clients to maintain execution quality
+                  Capped at 50 active clients to maintain execution quality
                 </p>
               </div>
             </motion.div>
