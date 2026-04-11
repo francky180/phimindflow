@@ -3,7 +3,6 @@
 import { motion, useTransform, useScroll, useInView, useMotionValue, useSpring, MotionValue } from "motion/react";
 import { useRef, useState, useEffect } from "react";
 import Navbar from "./Navbar";
-import EmailCapture from "./EmailCapture";
 import { brokerLink, courseLink, managementLink } from "./constants";
 
 /* ════════════════════════════════════════════════════
@@ -947,7 +946,6 @@ export default function Home() {
 
       {/* ──────────── STICKY MOBILE CTA ──────────── */}
       <StickyMobileCTA />
-      <EmailCapture />
     </main>
   );
 }
