@@ -3,6 +3,7 @@
 import { motion, useTransform, useScroll, useInView, useMotionValue, useSpring, MotionValue } from "motion/react";
 import { useRef, useState, useEffect } from "react";
 import Navbar from "./Navbar";
+import EmailCapture from "./EmailCapture";
 import { brokerLink, courseLink, managementLink } from "./constants";
 
 /* ════════════════════════════════════════════════════
@@ -265,8 +266,9 @@ export default function Home() {
                 transition={{ duration: 0.9, delay: 0.3, ease }}
                 className="mt-8 max-w-lg text-[17px] leading-[1.85] text-[#A0A0A0]"
               >
-                A three-step Fibonacci system that turns structure into returns.
-                Broker. Course. Management. Each step builds on the last.
+                Stop guessing entries. The Fibonacci system that tells you
+                where the market turns — before it does. Broker. Course.
+                Management.
               </motion.p>
 
               <motion.div
@@ -279,7 +281,7 @@ export default function Home() {
                   <GoldBtn href={brokerLink} large>Start Free — Open Broker</GoldBtn>
                   <SectionBtn href="#process">See the Process</SectionBtn>
                 </div>
-                <p className="text-[12px] text-[#666666]">Free to open &middot; Takes 5 minutes &middot; Required first step</p>
+                <p className="text-[12px] text-[#666666]">Free to open &middot; 5 minutes &middot; Gateway to Course + Management</p>
               </motion.div>
 
               {/* Trust indicators */}
@@ -945,6 +947,7 @@ export default function Home() {
 
       {/* ──────────── STICKY MOBILE CTA ──────────── */}
       <StickyMobileCTA />
+      <EmailCapture />
     </main>
   );
 }
