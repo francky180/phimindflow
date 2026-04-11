@@ -280,7 +280,7 @@ export default function Home() {
                   <GoldBtn href={brokerLink} large>Start Free — Open Broker</GoldBtn>
                   <SectionBtn href="#process">See the Process</SectionBtn>
                 </div>
-                <p className="text-[12px] text-[#666666]">Free to open &middot; 5 minutes &middot; Gateway to Course + Management</p>
+                <p className="text-[12px] text-[#666666]">Free &middot; Instant access &middot; Unlocks Course + Management</p>
               </motion.div>
 
               {/* Trust indicators */}
