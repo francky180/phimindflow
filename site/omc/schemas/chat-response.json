@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ChatResponse",
+  "description": "Response payload returned to ManyChat",
+  "type": "object",
+  "required": [
+    "reply",
+    "conversation_complete",
+    "qualified",
+    "category",
+    "lead_score",
+    "collected_fields",
+    "next_best_action",
+    "summary"
+  ],
+  "properties": {
+    "reply": {
+      "type": "string",
+      "description": "The AI-generated reply to send back to the user"
+    },
+    "conversation_complete": {
+      "type": "boolean",
+      "description": "Whether the conversation has reached a natural endpoint"
+    },
+    "qualified": {
+      "type": "boolean",
+      "description": "Whether the lead meets qualification criteria"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "broker-interest",
+        "course-interest",
+        "management-interest",
+        "general-inquiry",
+        "not-qualified"
+      ],
+      "description": "Lead classification category"
+    },
+    "lead_score": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Qualification score from 0-100"
+    },
+    "collected_fields": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "goal": { "type": "string" },
+        "experience_level": { "type": "string" },
+        "budget_signal": { "type": "string" }
+      },
+      "additionalProperties": false,
+      "description": "Structured data extracted from conversation"
+    },
+    "next_best_action": {
+      "type": "string",
+      "enum": [
+        "continue-conversation",
+        "offer-broker-signup",
+        "offer-course",
+        "offer-management",
+        "schedule-call",
+        "end-conversation"
+      ],
+      "description": "Recommended next step for the lead"
+    },
+    "summary": {
+      "type": "string",
+      "description": "Brief summary of the conversation for the sales team"
+    }
+  },
+  "additionalProperties": false
+}

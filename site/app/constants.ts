@@ -8,7 +8,18 @@
 export const brokerLink = "https://dashboard.genesisfxmarkets.com/auth/register?ref=FRADEL185";
 
 // ── Step 2: Course Purchase ($250) ─────────────────
-export const courseLink = "https://buy.stripe.com/3cI14n7Og2rn6g00Vhao804";
+export const courseLink = "/checkout?plan=course";
 
 // ── Step 3: Management Purchase ($1,500) ───────────
-export const managementLink = "https://buy.stripe.com/14k2bnf256Oh0gwdQQ";
+export const managementLink = "/checkout?plan=management";
+
+// ── Credit Pillar ──────────────────────────────────
+export const creditAnalysisLink = "/credit/checkout?plan=analysis";
+export const creditRepairLink = "/credit/checkout?plan=repair-monthly";
+export const creditFixLink = "/credit/checkout?plan=credit-fix";
+
+export const creditPricing = {
+  analysis: { price: 49, label: "Credit Analysis", type: "one-time" as const },
+  repairMonthly: { price: 149, label: "Credit Repair Monthly", type: "monthly" as const },
+  creditFix: { price: 1500, label: "Complete Credit Fix", type: "one-time" as const },
+};

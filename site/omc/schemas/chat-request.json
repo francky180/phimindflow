@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ChatRequest",
+  "description": "Incoming webhook payload from ManyChat",
+  "type": "object",
+  "required": ["message", "user_id"],
+  "properties": {
+    "message": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000,
+      "description": "The user's message text"
+    },
+    "user_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255,
+      "description": "ManyChat subscriber ID"
+    },
+    "conversation_history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["role", "content"],
+        "properties": {
+          "role": {
+            "type": "string",
+            "enum": ["user", "assistant"]
+          },
+          "content": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Optional previous messages for context"
+    }
+  },
+  "additionalProperties": false
+}

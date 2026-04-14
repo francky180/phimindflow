@@ -1,19 +1,21 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
 import { brokerLink } from "./constants";
 
-const links = [
-  ["Process", "#process"],
-  ["Course", "#course"],
-  ["Management", "#management"],
-  ["FAQ", "#faq"],
+const pillars = [
+  { label: "Trade", href: "/" },
+  { label: "Credit", href: "/credit" },
+  { label: "Learn", href: "/credit/learn" },
 ] as const;
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -21,49 +23,69 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const isActive = (href: string) => {
+    if (href === "/") return pathname === "/";
+    return pathname?.startsWith(href);
+  };
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "navbar-scrolled"
-          : "bg-transparent"
+        scrolled ? "navbar-scrolled" : "bg-transparent"
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         {/* Logo */}
-        <a href="#top" className="group flex items-center gap-3">
+        <Link href="/" className="group flex items-center gap-3">
           <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[rgba(201,168,78,0.1)] text-[#C9A84E] text-sm font-bold transition-colors duration-300 group-hover:bg-[rgba(201,168,78,0.2)]">
             &phi;
           </span>
           <span className="text-[13px] font-bold uppercase tracking-[0.4em] text-gold">
             PHIMINDFLOW
           </span>
-        </a>
+        </Link>
 
-        {/* Desktop nav */}
+        {/* Desktop pillars */}
         <nav className="hidden items-center gap-9 md:flex">
-          {links.map(([label, href]) => (
-            <a
-              key={label}
-              href={href}
-              className="relative text-[11px] font-semibold uppercase tracking-[0.18em] text-[#A0A0A0] transition-colors duration-300 hover:text-[#C9A84E] after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-[rgba(201,168,78,0.4)] after:transition-all after:duration-300 hover:after:w-full"
+          {pillars.map((p) => (
+            <Link
+              key={p.label}
+              href={p.href}
+              className={`relative text-[11px] font-semibold uppercase tracking-[0.18em] transition-colors duration-300 ${
+                isActive(p.href)
+                  ? "text-[#C9A84E]"
+                  : "text-[#A0A0A0] hover:text-[#C9A84E]"
+              } after:absolute after:-bottom-1 after:left-0 after:h-px after:bg-[rgba(201,168,78,0.6)] after:transition-all after:duration-300 ${
+                isActive(p.href) ? "after:w-full" : "after:w-0 hover:after:w-full"
+              }`}
             >
-              {label}
-            </a>
+              {p.label}
+            </Link>
           ))}
         </nav>
 
-        {/* CTA */}
-        <motion.a
-          href={brokerLink}
-          target="_blank"
-          rel="noreferrer"
-          whileHover={{ scale: 1.03 }}
-          whileTap={{ scale: 0.98 }}
-          className="gold-btn hidden rounded-full bg-[#C9A84E] px-6 py-2.5 text-[11px] font-bold uppercase tracking-[0.18em] text-white transition-shadow duration-300 hover:shadow-[0_4px_20px_rgba(201,168,78,0.3)] md:inline-flex"
-        >
-          Start Free
-        </motion.a>
+        {/* CTA — adapts to active pillar */}
+        {pathname?.startsWith("/credit") ? (
+          <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }} className="hidden md:inline-flex">
+            <Link
+              href="/credit/analyze"
+              className="gold-btn rounded-full bg-[#C9A84E] px-6 py-2.5 text-[11px] font-bold uppercase tracking-[0.18em] text-[#0a0a0e] transition-shadow duration-300 hover:shadow-[0_4px_20px_rgba(201,168,78,0.3)]"
+            >
+              Free Analysis
+            </Link>
+          </motion.div>
+        ) : (
+          <motion.a
+            href={brokerLink}
+            target="_blank"
+            rel="noreferrer"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.98 }}
+            className="gold-btn hidden rounded-full bg-[#C9A84E] px-6 py-2.5 text-[11px] font-bold uppercase tracking-[0.18em] text-white transition-shadow duration-300 hover:shadow-[0_4px_20px_rgba(201,168,78,0.3)] md:inline-flex"
+          >
+            Start Free
+          </motion.a>
+        )}
 
         {/* Mobile toggle */}
         <button
@@ -88,25 +110,37 @@ export default function Navbar() {
             className="overflow-hidden border-t border-[#1E1E1E] bg-[rgba(10,10,10,0.95)] backdrop-blur-xl md:hidden"
           >
             <div className="flex flex-col gap-5 px-6 py-8">
-              {links.map(([label, href]) => (
-                <a
-                  key={label}
-                  href={href}
+              {pillars.map((p) => (
+                <Link
+                  key={p.label}
+                  href={p.href}
                   onClick={() => setOpen(false)}
-                  className="text-sm font-semibold uppercase tracking-[0.15em] text-[#A0A0A0] transition hover:text-[#C9A84E]"
+                  className={`text-sm font-semibold uppercase tracking-[0.15em] transition ${
+                    isActive(p.href) ? "text-[#C9A84E]" : "text-[#A0A0A0] hover:text-[#C9A84E]"
+                  }`}
                 >
-                  {label}
-                </a>
+                  {p.label}
+                </Link>
               ))}
-              <a
-                href={brokerLink}
-                target="_blank"
-                rel="noreferrer"
-                onClick={() => setOpen(false)}
-                className="gold-btn mt-2 inline-flex w-fit rounded-full bg-[#C9A84E] px-6 py-3 text-[11px] font-bold uppercase tracking-[0.18em] text-white"
-              >
-                Start Free — Open Broker
-              </a>
+              {pathname?.startsWith("/credit") ? (
+                <Link
+                  href="/credit/analyze"
+                  onClick={() => setOpen(false)}
+                  className="gold-btn mt-2 inline-flex w-fit rounded-full bg-[#C9A84E] px-6 py-3 text-[11px] font-bold uppercase tracking-[0.18em] text-[#0a0a0e]"
+                >
+                  Free Credit Analysis
+                </Link>
+              ) : (
+                <a
+                  href={brokerLink}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={() => setOpen(false)}
+                  className="gold-btn mt-2 inline-flex w-fit rounded-full bg-[#C9A84E] px-6 py-3 text-[11px] font-bold uppercase tracking-[0.18em] text-white"
+                >
+                  Start Free — Open Broker
+                </a>
+              )}
             </div>
           </motion.nav>
         )}

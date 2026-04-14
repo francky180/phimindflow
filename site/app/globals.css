@@ -15,6 +15,13 @@
   --gold-glow: rgba(201, 168, 78, 0.15);
   --border: #1E1E1E;
   --border-light: #1A1A1A;
+
+  /* Credit-system aliases — keep ported code working without edits */
+  --accent: #C9A84E;
+  --accent-light: #D4B96A;
+  --accent-dim: rgba(201, 168, 78, 0.1);
+  --card: #141414;
+  --success: #00e5a0;
 }
 
 html {
