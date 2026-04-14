@@ -321,58 +321,14 @@ export default function Home() {
               </motion.div>
             </div>
 
-            {/* Right -- Hero stat card (fintech feel) */}
+            {/* Right -- Floating 3D trading charts (matches /credit floating cards) */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.92, y: 30 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 1.2, delay: 0.4, ease }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1.4, delay: 0.3, ease }}
               className="hidden lg:block"
             >
-              <div className="card-panel rounded-2xl p-6">
-                <div className="rounded-xl bg-[#0A0A0A] p-5">
-                  <div className="flex items-center justify-between mb-6">
-                    <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-[#C9A84E]">Portfolio Overview</span>
-                    <span className="flex items-center gap-2">
-                      <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-                      <span className="text-[9px] uppercase tracking-[0.15em] text-emerald-600">Live</span>
-                    </span>
-                  </div>
-                  <div className="grid grid-cols-3 gap-4 mb-6">
-                    {[
-                      ["$127,450", "Balance", "+12.4%"],
-                      ["+34.8%", "Growth", "+5.2%"],
-                      ["847", "Trades", "+89"],
-                    ].map(([val, label, delta]) => (
-                      <div key={label} className="card-panel rounded-xl p-4 text-center">
-                        <p className="stat-value text-lg font-bold text-[#F5F5F5]">{val}</p>
-                        <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-[#666666]">{label}</p>
-                        <p className="mt-1.5 text-[10px] font-semibold text-emerald-600">{delta}</p>
-                      </div>
-                    ))}
-                  </div>
-                  {/* Mini chart */}
-                  <div className="card-panel rounded-xl p-4">
-                    <svg viewBox="0 0 480 90" className="w-full h-auto">
-                      <defs>
-                        <linearGradient id="cg" x1="0%" y1="0%" x2="100%" y2="0%">
-                          <stop offset="0%" stopColor="#C9A84E" stopOpacity="0.2" />
-                          <stop offset="100%" stopColor="#C9A84E" stopOpacity="0.7" />
-                        </linearGradient>
-                        <linearGradient id="cf" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="0%" stopColor="#C9A84E" stopOpacity="0.1" />
-                          <stop offset="100%" stopColor="#C9A84E" stopOpacity="0" />
-                        </linearGradient>
-                      </defs>
-                      <path d={chartPath + " L480,90 L0,90 Z"} fill="url(#cf)" />
-                      <path d={chartPath} fill="none" stroke="url(#cg)" strokeWidth="2" strokeLinecap="round" className="chart-line" />
-                      <circle cx="480" cy="0" r="3" fill="#C9A84E" opacity="0.7">
-                        <animate attributeName="r" values="3;5;3" dur="2s" repeatCount="indefinite" />
-                        <animate attributeName="opacity" values="0.7;0.3;0.7" dur="2s" repeatCount="indefinite" />
-                      </circle>
-                    </svg>
-                  </div>
-                </div>
-              </div>
+              <FloatingCharts />
             </motion.div>
           </div>
         </div>

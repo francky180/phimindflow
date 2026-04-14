@@ -8,3 +8,9 @@ node_modules/
 next-env.d.ts
 video/out/
 .claude/
+
+.vercel
+.gitnexus
+
+# Flow recordings — too large for GitHub (>100MB limit)
+automation/asf-flow-recording/*.webm

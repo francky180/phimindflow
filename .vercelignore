@@ -1,0 +1,8 @@
+video/
+automation/
+docs/
+offers/
+prompts/
+.gitnexus/
+*.mp4
+*.wav

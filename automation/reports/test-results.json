@@ -1,0 +1,616 @@
+{
+  "config": {
+    "configFile": "C:\\Users\\franc\\Projects\\websites\\phimindflow-site\\automation\\playwright.config.ts",
+    "rootDir": "C:/Users/franc/Projects/websites/phimindflow-site/automation/tests",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/franc/Projects/websites/phimindflow-site/automation/reports",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "Desktop",
+        "name": "Desktop",
+        "testDir": "C:/Users/franc/Projects/websites/phimindflow-site/automation/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "C:/Users/franc/Projects/websites/phimindflow-site/automation/reports",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "Mobile",
+        "name": "Mobile",
+        "testDir": "C:/Users/franc/Projects/websites/phimindflow-site/automation/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "./reports/test-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.59.1",
+    "workers": 4,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "funnel-flow.spec.ts",
+      "file": "funnel-flow.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Homepage",
+          "file": "funnel-flow.spec.ts",
+          "line": 15,
+          "column": 6,
+          "specs": [
+            {
+              "title": "loads with correct title",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Desktop",
+                  "projectName": "Desktop",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1628,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-04-05T03:49:50.530Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\franc\\Projects\\websites\\phimindflow-site\\automation\\reports\\funnel-flow-Homepage-loads-with-correct-title-Desktop\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d84188eabfafb865ca32-551f139f4fc98ba73385",
+              "file": "funnel-flow.spec.ts",
+              "line": 16,
+              "column": 7
+            },
+            {
+              "title": "hero section visible",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Desktop",
+                  "projectName": "Desktop",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1163,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-04-05T03:49:52.333Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\franc\\Projects\\websites\\phimindflow-site\\automation\\reports\\funnel-flow-Homepage-hero-section-visible-Desktop\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d84188eabfafb865ca32-c263bc28d4143f068e86",
+              "file": "funnel-flow.spec.ts",
+              "line": 25,
+              "column": 7
+            },
+            {
+              "title": "navbar has all links",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Desktop",
+                  "projectName": "Desktop",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1516,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-04-05T03:49:53.527Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\franc\\Projects\\websites\\phimindflow-site\\automation\\reports\\funnel-flow-Homepage-navbar-has-all-links-Desktop\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d84188eabfafb865ca32-d80af5d46bf809f91ea6",
+              "file": "funnel-flow.spec.ts",
+              "line": 32,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "CTA Links",
+          "file": "funnel-flow.spec.ts",
+          "line": 44,
+          "column": 6,
+          "specs": [
+            {
+              "title": "broker CTA points to correct URL",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Desktop",
+                  "projectName": "Desktop",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1052,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-04-05T03:49:55.069Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\franc\\Projects\\websites\\phimindflow-site\\automation\\reports\\funnel-flow-CTA-Links-broker-CTA-points-to-correct-URL-Desktop\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d84188eabfafb865ca32-7c1dd71d4e4148ea305e",
+              "file": "funnel-flow.spec.ts",
+              "line": 45,
+              "column": 7
+            },
+            {
+              "title": "course CTA points to correct URL",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Desktop",
+                  "projectName": "Desktop",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 940,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-04-05T03:49:56.138Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\franc\\Projects\\websites\\phimindflow-site\\automation\\reports\\funnel-flow-CTA-Links-course-CTA-points-to-correct-URL-Desktop\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d84188eabfafb865ca32-bdceb98f49bc3cafde4c",
+              "file": "funnel-flow.spec.ts",
+              "line": 56,
+              "column": 7
+            },
+            {
+              "title": "management CTA points to correct URL",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Desktop",
+                  "projectName": "Desktop",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 962,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-04-05T03:49:57.095Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\franc\\Projects\\websites\\phimindflow-site\\automation\\reports\\funnel-flow-CTA-Links-management-CTA-points-to-correct-URL-Desktop\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d84188eabfafb865ca32-023e149a9156b2ae185b",
+              "file": "funnel-flow.spec.ts",
+              "line": 66,
+              "column": 7
+            },
+            {
+              "title": "broker CTA opens external page",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Desktop",
+                  "projectName": "Desktop",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 5838,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-04-05T03:49:58.072Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\franc\\Projects\\websites\\phimindflow-site\\automation\\reports\\funnel-flow-CTA-Links-broker-CTA-opens-external-page-Desktop\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d84188eabfafb865ca32-eb66f4c13e3f534c6f7f",
+              "file": "funnel-flow.spec.ts",
+              "line": 78,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "Page Sections",
+          "file": "funnel-flow.spec.ts",
+          "line": 96,
+          "column": 6,
+          "specs": [
+            {
+              "title": "process section exists",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Desktop",
+                  "projectName": "Desktop",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1488,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-04-05T03:50:03.948Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\franc\\Projects\\websites\\phimindflow-site\\automation\\reports\\funnel-flow-Page-Sections-process-section-exists-Desktop\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d84188eabfafb865ca32-6d80bcedfaa7a0d5ec11",
+              "file": "funnel-flow.spec.ts",
+              "line": 97,
+              "column": 7
+            },
+            {
+              "title": "FAQ section exists",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Desktop",
+                  "projectName": "Desktop",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1002,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-04-05T03:50:05.471Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\franc\\Projects\\websites\\phimindflow-site\\automation\\reports\\funnel-flow-Page-Sections-FAQ-section-exists-Desktop\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d84188eabfafb865ca32-7e0c869032499b9e0799",
+              "file": "funnel-flow.spec.ts",
+              "line": 106,
+              "column": 7
+            },
+            {
+              "title": "footer exists with risk disclosure",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Desktop",
+                  "projectName": "Desktop",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1172,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-04-05T03:50:06.491Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\franc\\Projects\\websites\\phimindflow-site\\automation\\reports\\funnel-flow-Page-Sections-footer-exists-with-risk-disclosure-Desktop\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d84188eabfafb865ca32-2d6a73b99358457bb681",
+              "file": "funnel-flow.spec.ts",
+              "line": 115,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "Analytics",
+          "file": "funnel-flow.spec.ts",
+          "line": 126,
+          "column": 6,
+          "specs": [
+            {
+              "title": "page source includes analytics components",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Desktop",
+                  "projectName": "Desktop",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1153,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-04-05T03:50:07.679Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\franc\\Projects\\websites\\phimindflow-site\\automation\\reports\\funnel-flow-Analytics-page-d2f79-cludes-analytics-components-Desktop\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d84188eabfafb865ca32-6885abe718899c429048",
+              "file": "funnel-flow.spec.ts",
+              "line": 127,
+              "column": 7
+            }
+          ]
+        },
+        {
+          "title": "Mobile Sticky CTA",
+          "file": "funnel-flow.spec.ts",
+          "line": 137,
+          "column": 6,
+          "specs": [
+            {
+              "title": "sticky CTA appears on scroll (mobile)",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Desktop",
+                  "projectName": "Desktop",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2148,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-04-05T03:50:08.861Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\franc\\Projects\\websites\\phimindflow-site\\automation\\reports\\funnel-flow-Mobile-Sticky--86322-A-appears-on-scroll-mobile--Desktop\\test-finished-1.png"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "d84188eabfafb865ca32-80c2eed1513f58e6c63f",
+              "file": "funnel-flow.spec.ts",
+              "line": 138,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-04-05T03:49:49.636Z",
+    "duration": 21545.598,
+    "expected": 12,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

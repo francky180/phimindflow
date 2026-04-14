@@ -31,7 +31,11 @@
       "Bash(claude --version)",
       "Bash(git -C C:/Users/franc/Projects/websites/phimindflow-site remote -v)",
       "Bash(git -C C:/Users/franc/Projects/websites/phimindflow-site/site remote -v)",
-      "Bash(git -C C:/Users/franc/Projects/websites/phimindflow-site/site branch -a)"
+      "Bash(git -C C:/Users/franc/Projects/websites/phimindflow-site/site branch -a)",
+      "WebFetch(domain:doc.clickup.com)",
+      "Bash(npx tsc:*)",
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(echo \"TSC_EXIT: $?\")"
     ]
   }
 }

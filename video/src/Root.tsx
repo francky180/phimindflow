@@ -7,6 +7,13 @@ import { InstaReel } from "./InstaReel";
 import { SupplyDemandReel } from "./SupplyDemandReel";
 import { WhatYouGet } from "./WhatYouGet";
 import { BookLibrary, LIBRARY_DURATION } from "./BookLibrary";
+import { ASFJourney, ASF_JOURNEY_DURATION } from "./ASFJourney";
+import { CreditPathJourney, CREDITPATH_JOURNEY_DURATION } from "./CreditPathJourney";
+import { FlorifyeJourney, FLORIFYE_JOURNEY_DURATION } from "./FlorifyeJourney";
+import { GHLSyncJourney, GHL_SYNC_DURATION } from "./GHLSyncJourney";
+import { ASFCheckout, ASF_CHECKOUT_DURATION } from "./ASFCheckout";
+import { PhimindflowPaymentFlow, PMF_PAYMENT_DURATION } from "./PhimindflowPaymentFlow";
+import { CommentYesReel, COMMENT_YES_DURATION } from "./CommentYesReel";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -74,6 +81,62 @@ export const RemotionRoot: React.FC = () => {
         fps={30}
         width={1920}
         height={1080}
+      />
+      <Composition
+        id="ASFJourney"
+        component={ASFJourney}
+        durationInFrames={ASF_JOURNEY_DURATION}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="CreditPathJourney"
+        component={CreditPathJourney}
+        durationInFrames={CREDITPATH_JOURNEY_DURATION}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="FlorifyeJourney"
+        component={FlorifyeJourney}
+        durationInFrames={FLORIFYE_JOURNEY_DURATION}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="GHLSyncJourney"
+        component={GHLSyncJourney}
+        durationInFrames={GHL_SYNC_DURATION}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="ASFCheckout"
+        component={ASFCheckout}
+        durationInFrames={ASF_CHECKOUT_DURATION}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="PhimindflowPaymentFlow"
+        component={PhimindflowPaymentFlow}
+        durationInFrames={PMF_PAYMENT_DURATION}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="CommentYesReel"
+        component={CommentYesReel}
+        durationInFrames={COMMENT_YES_DURATION}
+        fps={30}
+        width={1080}
+        height={1920}
       />
     </>
   );
