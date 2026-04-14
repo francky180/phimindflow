@@ -949,7 +949,7 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <motion.div {...reveal} className="mb-16 hidden md:block">
+          <motion.div {...reveal} className="mb-16">
             <FloatingCharts />
           </motion.div>
 
