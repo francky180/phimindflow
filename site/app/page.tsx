@@ -3,6 +3,7 @@
 import { motion, useTransform, useScroll, useInView, useMotionValue, useSpring, MotionValue } from "motion/react";
 import { useRef, useState, useEffect } from "react";
 import Navbar from "./Navbar";
+import FloatingCharts from "./FloatingCharts";
 import { brokerLink, courseLink, managementLink } from "./constants";
 
 /* ════════════════════════════════════════════════════
@@ -279,6 +280,18 @@ export default function Home() {
                 <div className="flex flex-wrap items-center gap-5">
                   <GoldBtn href={brokerLink} large>Start Free — Open Broker</GoldBtn>
                   <SectionBtn href="#process">See the Process</SectionBtn>
+                  <motion.a
+                    href="/credit"
+                    whileHover={{ scale: 1.03, y: -2 }}
+                    whileTap={{ scale: 0.97 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 20 }}
+                    className="inline-flex items-center gap-2.5 rounded-2xl border border-[rgba(201,168,78,0.4)] px-8 py-4 text-[13px] font-semibold uppercase tracking-[0.12em] text-[#C9A84E] transition-all duration-300 hover:border-[#C9A84E] hover:shadow-[0_4px_20px_rgba(201,168,78,0.15)] hover:bg-[rgba(201,168,78,0.05)]"
+                  >
+                    Credit Repair
+                    <svg viewBox="0 0 16 16" fill="none" className="h-3.5 w-3.5">
+                      <path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </motion.a>
                 </div>
                 <p className="text-[12px] text-[#666666]">Free &middot; Instant access &middot; Unlocks Course + Management</p>
               </motion.div>
@@ -914,6 +927,71 @@ export default function Home() {
               </div>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* ──────────── ECOSYSTEM · TWO PILLARS ──────────── */}
+      <Divider />
+      <section id="ecosystem" className="relative bg-[#0E0E0E] py-24 sm:py-32 overflow-hidden">
+        <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-[#C9A84E] opacity-[0.04] blur-[180px]" />
+        <div className="relative mx-auto max-w-6xl px-6">
+          <motion.div {...reveal} className="text-center mb-16">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.4em] text-[#C9A84E] mb-5">
+              The Phimindflow Ecosystem
+            </p>
+            <h2 className="text-[clamp(2rem,5vw,3.5rem)] font-extrabold tracking-[-0.03em] leading-[1.08]">
+              Trade. Fix Credit.
+              <br />
+              <span className="text-gold">Build Wealth.</span>
+            </h2>
+            <p className="mx-auto mt-6 max-w-2xl text-[16px] leading-[1.85] text-[#A0A0A0]">
+              Good credit unlocks capital. Trading grows it. Together they build freedom. Phimindflow runs both pillars under one roof.
+            </p>
+          </motion.div>
+
+          <motion.div {...reveal} className="mb-16 hidden md:block">
+            <FloatingCharts />
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <motion.a
+              {...reveal}
+              href="#process"
+              className="card-panel feature-card rounded-2xl p-10 group"
+            >
+              <span className="inline-block rounded-full border border-[#C9A84E]/30 bg-[rgba(201,168,78,0.08)] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-[#C9A84E] mb-6">
+                Pillar 1 · Trade
+              </span>
+              <h3 className="text-2xl sm:text-3xl font-extrabold tracking-[-0.02em] text-[#F5F5F5] mb-4">
+                Structured Wealth. Zero Guesswork.
+              </h3>
+              <p className="text-[#A0A0A0] leading-[1.75] mb-8">
+                Fibonacci growth system. Broker setup, premium course, management tier. The precision path to funded trading.
+              </p>
+              <span className="inline-flex items-center gap-2 text-[#C9A84E] font-semibold text-sm group-hover:gap-3 transition-all">
+                See the Process <span>→</span>
+              </span>
+            </motion.a>
+
+            <motion.a
+              {...reveal}
+              href="/credit"
+              className="card-panel feature-card rounded-2xl p-10 group border-[#C9A84E]/20"
+            >
+              <span className="inline-block rounded-full premium-badge px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] text-[#0a0a0e] mb-6">
+                Pillar 2 · Credit · New
+              </span>
+              <h3 className="text-2xl sm:text-3xl font-extrabold tracking-[-0.02em] text-[#F5F5F5] mb-4">
+                Fix Your Credit. Unlock Capital.
+              </h3>
+              <p className="text-[#A0A0A0] leading-[1.75] mb-8">
+                AI credit analysis, FCRA-compliant disputes, Metro 2 certified letters. The same precision — now on your credit file.
+              </p>
+              <span className="inline-flex items-center gap-2 text-[#C9A84E] font-semibold text-sm group-hover:gap-3 transition-all">
+                Start Free Analysis <span>→</span>
+              </span>
+            </motion.a>
+          </div>
         </div>
       </section>
 
