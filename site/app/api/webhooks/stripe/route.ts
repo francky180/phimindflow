@@ -166,9 +166,38 @@ export async function POST(req: Request) {
           html: buildWelcomeEmail(name, product),
         }),
         updateGhlContact(email, product),
+        notifyDiscordSale({ email, name, product, amount }),
       ]);
     }
   }
 
   return NextResponse.json({ received: true });
+}
+
+async function notifyDiscordSale({ email, name, product, amount }: { email: string; name: string; product: string; amount: number }) {
+  const url = process.env.DISCORD_WEBHOOK_URL;
+  if (!url) return;
+  const priceLabel = `$${(amount / 100).toFixed(2)}`;
+  const productLabel = product === 'management' ? 'Managed Execution' : 'Fibonacci Course';
+  try {
+    await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        username: 'FrancHub · Sales',
+        embeds: [{
+          title: `💰 New Sale · ${priceLabel}`,
+          description: `**${productLabel}**`,
+          color: 0x22c55e,
+          fields: [
+            { name: 'Customer', value: name || email, inline: true },
+            { name: 'Email', value: email, inline: true },
+          ],
+          timestamp: new Date().toISOString(),
+        }],
+      }),
+    });
+  } catch (e) {
+    console.error('[discord-sale-alert]', e);
+  }
 }
