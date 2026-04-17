@@ -278,7 +278,17 @@ export default function Home() {
                 className="mt-12 flex flex-col gap-4"
               >
                 <div className="flex flex-wrap items-center gap-5">
-                  <GoldBtn href={brokerLink} large>Start Free — Open Broker</GoldBtn>
+                  <div className="flex flex-col gap-2.5">
+                    <GoldBtn href={brokerLink} large>Genesis FX — Open Broker</GoldBtn>
+                    <a
+                      href={brokerLinkAaafx}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center rounded-2xl border border-[rgba(201,168,78,0.4)] px-10 py-5 text-[14px] font-bold uppercase tracking-[0.12em] text-[#C9A84E] transition-all duration-300 hover:border-[#C9A84E] hover:bg-[rgba(201,168,78,0.05)] hover:shadow-[0_4px_20px_rgba(201,168,78,0.15)]"
+                    >
+                      AAAFX — Open Broker
+                    </a>
+                  </div>
                   <SectionBtn href="#process">See the Process</SectionBtn>
                   <motion.a
                     href="/credit"
@@ -882,7 +892,17 @@ export default function Home() {
               </p>
 
               <div className="mt-14 flex flex-col items-center gap-6">
-                <GoldBtn href={brokerLink} large>Start Free — Open Broker</GoldBtn>
+                <div className="flex flex-col items-center gap-2.5">
+                  <GoldBtn href={brokerLink} large>Genesis FX — Open Broker</GoldBtn>
+                  <a
+                    href={brokerLinkAaafx}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center rounded-2xl border border-[rgba(201,168,78,0.4)] px-10 py-5 text-[14px] font-bold uppercase tracking-[0.12em] text-[#C9A84E] transition-all duration-300 hover:border-[#C9A84E] hover:bg-[rgba(201,168,78,0.05)] hover:shadow-[0_4px_20px_rgba(201,168,78,0.15)]"
+                  >
+                    AAAFX — Open Broker
+                  </a>
+                </div>
                 <div className="flex flex-wrap items-center justify-center gap-4">
                   <OutlineBtn href={courseLink}>Unlock The System — $250</OutlineBtn>
                   <OutlineBtn href={managementLink} highlight>Upgrade to Managed Execution</OutlineBtn>
@@ -1005,17 +1025,27 @@ function StickyMobileCTA() {
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-[#1E1E1E] bg-[rgba(10,10,10,0.95)] backdrop-blur-xl px-4 py-3 md:hidden">
-      <a
-        href={brokerLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="gold-btn flex w-full items-center justify-center gap-2 rounded-2xl bg-[#C9A84E] py-3.5 text-[12px] font-bold uppercase tracking-[0.12em] text-white shadow-[0_2px_12px_rgba(201,168,78,0.25)]"
-      >
-        Start Free — Open Broker
-        <svg viewBox="0 0 16 16" fill="none" className="h-3.5 w-3.5">
-          <path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      </a>
+      <div className="flex flex-col gap-2">
+        <a
+          href={brokerLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="gold-btn flex w-full items-center justify-center gap-2 rounded-2xl bg-[#C9A84E] py-3 text-[12px] font-bold uppercase tracking-[0.12em] text-white shadow-[0_2px_12px_rgba(201,168,78,0.25)]"
+        >
+          Genesis FX — Open Broker
+          <svg viewBox="0 0 16 16" fill="none" className="h-3.5 w-3.5">
+            <path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </a>
+        <a
+          href={brokerLinkAaafx}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex w-full items-center justify-center rounded-2xl border border-[rgba(201,168,78,0.4)] py-3 text-[12px] font-bold uppercase tracking-[0.12em] text-[#C9A84E]"
+        >
+          AAAFX — Open Broker
+        </a>
+      </div>
       <p className="mt-1.5 text-center text-[10px] text-[#666666]">Step 1 of 3 &middot; Free &middot; Takes 5 minutes</p>
     </div>
   );
