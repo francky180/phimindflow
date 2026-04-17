@@ -238,9 +238,21 @@ export function parseReportText(text: string): ParsedReport {
       negativeReason = `Late Payment (${totalLateDays}x in 7 years)`;
     }
 
-    // Account number
-    const acctMatch = block.match(/Account #\s*\n\s*([A-Z0-9*]+)/i);
-    const accountNumber = acctMatch ? acctMatch[1].replace(/\*/g, "").slice(-4) || "****" : "****";
+    // Account number — try multiple formats; always extract last 4 real digits
+    const acctPatterns = [
+      /Account\s*#\s*[:\n]?\s*([A-Z0-9*xX#\-\s]{3,})/i,
+      /Account\s*(?:Number|No\.?|#)\s*[:\-]?\s*([A-Z0-9*xX#\-\s]{3,})/i,
+      /Acct\.?\s*(?:Number|No\.?|#)?\s*[:\-]?\s*([A-Z0-9*xX#\-\s]{3,})/i,
+      /\b([*xX#]{2,}\s*\d{4})\b/,
+      /\b(\d{4})\b(?=\s*(?:$|\n|balance|status|opened))/i,
+    ];
+    let accountNumber = "****";
+    for (const pat of acctPatterns) {
+      const m = block.match(pat);
+      if (!m) continue;
+      const digits = m[1].replace(/\D/g, "");
+      if (digits.length >= 4) { accountNumber = digits.slice(-4); break; }
+    }
 
     // Status
     let status = "Open";

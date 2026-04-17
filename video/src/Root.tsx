@@ -14,6 +14,7 @@ import { GHLSyncJourney, GHL_SYNC_DURATION } from "./GHLSyncJourney";
 import { ASFCheckout, ASF_CHECKOUT_DURATION } from "./ASFCheckout";
 import { PhimindflowPaymentFlow, PMF_PAYMENT_DURATION } from "./PhimindflowPaymentFlow";
 import { CommentYesReel, COMMENT_YES_DURATION } from "./CommentYesReel";
+import { RebuildWalkthrough, REBUILD_DURATION } from "./RebuildWalkthrough";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -137,6 +138,14 @@ export const RemotionRoot: React.FC = () => {
         fps={30}
         width={1080}
         height={1920}
+      />
+      <Composition
+        id="RebuildWalkthrough"
+        component={RebuildWalkthrough}
+        durationInFrames={REBUILD_DURATION}
+        fps={30}
+        width={1920}
+        height={1080}
       />
     </>
   );

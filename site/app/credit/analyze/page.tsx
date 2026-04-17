@@ -604,7 +604,7 @@ export default function AnalyzePage() {
                     {/* Pricing CTAs */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <a
-                        href="https://buy.stripe.com/5kQ7sL4C4gidgUEavRao80b"
+                        href="https://buy.stripe.com/00weVd4C4d616g01Zlao80e"
                         className="p-6 rounded-2xl border border-[var(--border)] bg-[var(--card)] hover:border-[var(--accent)]/50 transition-all"
                       >
                         <div className="text-xs font-bold tracking-[0.18em] text-[var(--muted)] mb-2">SMART SYSTEM · $97 ONCE</div>
@@ -614,7 +614,7 @@ export default function AnalyzePage() {
                       </a>
 
                       <a
-                        href="https://buy.stripe.com/bJeeVd6Kc7LHawg5bxao80c"
+                        href="https://buy.stripe.com/eVq14n4C40jffQAbzVao80g"
                         className="p-6 rounded-2xl border-2 border-[var(--accent)] bg-gradient-to-br from-[var(--accent)]/10 to-transparent hover:shadow-lg transition-all relative"
                       >
                         <span className="absolute -top-2 right-4 px-3 py-0.5 text-[10px] font-bold tracking-widest bg-[var(--accent)] text-[#0a0a0e] rounded-full">MOST POPULAR</span>

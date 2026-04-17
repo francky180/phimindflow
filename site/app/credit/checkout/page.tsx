@@ -4,12 +4,11 @@ import { useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 
-// TODO: Replace with real Stripe Payment Links once products are created.
-// Until then, these redirect back to the credit landing page with a pending flag.
+// Phimindflow-branded Stripe Payment Links (live).
 const STRIPE_LINKS: Record<string, string> = {
-  analysis: '/credit?checkout=pending&plan=analysis',
-  'repair-monthly': '/credit?checkout=pending&plan=repair-monthly',
-  'credit-fix': '/credit?checkout=pending&plan=credit-fix',
+  analysis: 'https://buy.stripe.com/4gM28r3y00jf5bW1Zlao80d',
+  'repair-monthly': 'https://buy.stripe.com/28EeVd4C4d611ZKcDZao80f',
+  'credit-fix': 'https://buy.stripe.com/5kQdR9d8AgideMwavRao80h',
 };
 
 const PLAN_LABELS: Record<string, { name: string; price: string }> = {

@@ -541,18 +541,8 @@ function DisputeLettersPage() {
                     );
                   })}
 
-                  {/* Tips */}
-                  <div className="p-6 rounded-2xl bg-[var(--accent-dim)] border border-[var(--accent)]/10">
-                    <h3 className="font-bold text-[var(--text)] mb-3">Next Steps</h3>
-                    <ol className="space-y-2 text-sm text-[var(--muted)]">
-                      <li className="flex gap-2"><span className="font-bold text-[var(--accent)]">1.</span> Print each letter and sign it</li>
-                      <li className="flex gap-2"><span className="font-bold text-[var(--accent)]">2.</span> Include a copy of your government-issued ID, your SSN, and proof of current address (utility bill or bank statement)</li>
-                      <li className="flex gap-2"><span className="font-bold text-[var(--accent)]">3.</span> Send via certified mail with return receipt requested</li>
-                      <li className="flex gap-2"><span className="font-bold text-[var(--accent)]">4.</span> Keep copies of everything you send</li>
-                      <li className="flex gap-2"><span className="font-bold text-[var(--accent)]">5.</span> The bureau has 30 days to investigate and respond</li>
-                      <li className="flex gap-2"><span className="font-bold text-[var(--accent)]">6.</span> If items aren't removed, come back and generate Round {Math.min(3, selectedRound + 1)} letters</li>
-                    </ol>
-                  </div>
+                  {/* How to send — instructions + links */}
+                  <HowToSendPanel nextRound={Math.min(3, selectedRound + 1)} />
                 </div>
               )}
 
@@ -569,7 +559,7 @@ function DisputeLettersPage() {
               How Dispute Rounds Work
             </h2>
             <p className="text-sm text-[var(--text-secondary)] mb-6">
-              Every FloriFye letter is built around a 3-round escalation system. Each round ups the legal pressure and cites stronger FCRA, FDCPA, and Metro 2 compliance demands.
+              Every Phimindflow letter is built around a 3-round escalation system. Each round ups the legal pressure and cites stronger FCRA, FDCPA, and Metro 2 compliance demands.
             </p>
 
             <div className="space-y-3">
@@ -637,5 +627,97 @@ function DisputeLettersPage() {
         </div>
       </main>
     </>
+  );
+}
+
+function HowToSendPanel({ nextRound }: { nextRound: number }) {
+  return (
+    <div className="rounded-2xl border border-[var(--accent)]/20 bg-[var(--card)] overflow-hidden">
+      <div className="px-6 py-5 bg-[var(--accent-dim)] border-b border-[var(--accent)]/20">
+        <div className="flex items-center gap-3">
+          <div className="w-9 h-9 rounded-xl bg-[var(--accent)] text-[#0a0a0e] flex items-center justify-center">
+            <FileText size={16} />
+          </div>
+          <div>
+            <h3 className="font-bold text-[var(--text)] text-base">How to Send These Letters</h3>
+            <p className="text-xs text-[var(--muted)]">Read before mailing — this is how the rules work</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="p-6 space-y-6">
+        <Step n={1} title="Sign each letter">
+          Print every letter. Sign each one by hand in blue or black ink above your typed name.
+        </Step>
+
+        <Step n={2} title="Enclose these 3 items (required)">
+          Without all three, the bureau can legally stall your dispute.
+          <ul className="mt-2 space-y-1 list-disc list-inside text-[var(--muted)]">
+            <li>Clear copy of your government-issued photo ID (driver&apos;s license, state ID, or passport)</li>
+            <li>Copy of your Social Security card — or a document showing your full SSN (W-2, SSA letter, or tax return)</li>
+            <li>Proof of current address dated within the last 60 days (utility bill, bank statement, or lease)</li>
+          </ul>
+        </Step>
+
+        <Step n={3} title="Send via certified mail with return receipt">
+          Do <strong>not</strong> use regular mail. You must have tracking and proof of delivery.
+          <div className="mt-3 grid gap-3 sm:grid-cols-2">
+            <a
+              href="https://www.letterstream.com/certified-mail/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block p-4 rounded-xl border border-[var(--accent)]/30 bg-[var(--accent-dim)] hover:border-[var(--accent)] transition-all"
+            >
+              <div className="text-xs font-bold text-[var(--accent)] uppercase tracking-widest mb-1">Recommended · Online</div>
+              <div className="text-sm font-semibold text-[var(--text)]">LetterStream</div>
+              <div className="text-xs text-[var(--muted)] mt-1">Print + mail certified without leaving home →</div>
+            </a>
+            <div className="block p-4 rounded-xl border border-[var(--border)] bg-[var(--bg)]">
+              <div className="text-xs font-bold text-[var(--muted)] uppercase tracking-widest mb-1">In person</div>
+              <div className="text-sm font-semibold text-[var(--text)]">USPS Post Office</div>
+              <div className="text-xs text-[var(--muted)] mt-1">Ask for Certified Mail + Return Receipt (Forms 3800 + 3811)</div>
+            </div>
+          </div>
+        </Step>
+
+        <Step n={4} title="Save everything">
+          Keep a copy of each signed letter, the certified mail receipt, and the green return receipt card when it comes back. This is your legal proof the bureau received the dispute.
+        </Step>
+
+        <Step n={5} title="Wait 30 days">
+          The bureau has 30 days by law to investigate and respond. If they don&apos;t respond, or respond with &ldquo;verified&rdquo; but provide no proof — escalate.
+        </Step>
+
+        <Step n={6} title="Escalate if ignored or verified without proof">
+          File a free complaint with the Consumer Financial Protection Bureau. This triggers a federal investigation and almost always forces deletion.
+          <a
+            href="https://www.consumerfinance.gov/complaint/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-3 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[var(--accent)] text-[#0a0a0e] text-sm font-bold hover:bg-[var(--accent-light)] transition-all"
+          >
+            File a CFPB Complaint →
+          </a>
+        </Step>
+
+        <Step n={7} title={`Still not removed? Come back for Round ${nextRound}`}>
+          If items aren&apos;t removed after 30 days, return to this page and generate Round {nextRound} letters. Each round escalates the legal pressure.
+        </Step>
+      </div>
+    </div>
+  );
+}
+
+function Step({ n, title, children }: { n: number; title: string; children: React.ReactNode }) {
+  return (
+    <div className="flex gap-4">
+      <div className="shrink-0 w-8 h-8 rounded-full bg-[var(--accent)] text-[#0a0a0e] flex items-center justify-center text-sm font-bold">
+        {n}
+      </div>
+      <div className="flex-1 pt-1">
+        <div className="font-bold text-[var(--text)] text-sm mb-1">{title}</div>
+        <div className="text-sm text-[var(--muted)] leading-relaxed">{children}</div>
+      </div>
+    </div>
   );
 }

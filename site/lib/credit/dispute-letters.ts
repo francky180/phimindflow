@@ -49,6 +49,7 @@ function maskAccountNumber(raw: string): string {
   return "XXXX";
 }
 
+
 const METRO2_TARGETED_FIELDS: Record<DisputeType, string[]> = {
   collection: ["Date of First Delinquency (DOFD)", "Account Status Code", "Current Balance", "Original Amount / High Balance", "Date of Account Opening", "ECOA Code"],
   "late-payment": ["Payment Rating", "Date of First Delinquency (DOFD)", "Account Status Code", "Current Balance", "Original Amount / High Balance", "ECOA Code"],
