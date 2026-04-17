@@ -4,7 +4,7 @@ import { motion, useTransform, useScroll, useInView, useMotionValue, useSpring, 
 import { useRef, useState, useEffect } from "react";
 import Navbar from "./Navbar";
 import FloatingCharts from "./FloatingCharts";
-import { brokerLink, courseLink, managementLink } from "./constants";
+import { brokerLink, brokerLinkAaafx, courseLink, managementLink } from "./constants";
 
 /* ════════════════════════════════════════════════════
    CONSTANTS
@@ -553,9 +553,17 @@ export default function Home() {
                 Your foundation. Set up the trading infrastructure so every step
                 that follows has a live account ready. Free, takes 5 minutes.
               </p>
-              <p className="mt-3 text-[12px] font-semibold uppercase tracking-[0.15em] text-emerald-600">Free &middot; 5 minutes &middot; Genesis FX Markets</p>
-              <div className="mt-8">
-                <GoldBtn href={brokerLink}>Start Free — Open Broker</GoldBtn>
+              <p className="mt-3 text-[12px] font-semibold uppercase tracking-[0.15em] text-emerald-600">Free &middot; 5 minutes &middot; Pick a broker</p>
+              <div className="mt-8 flex flex-col gap-3">
+                <GoldBtn href={brokerLink}>Genesis FX — Open Broker</GoldBtn>
+                <a
+                  href={brokerLinkAaafx}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center rounded-2xl border border-[#C9A84E]/40 bg-transparent px-6 py-3.5 text-[12px] font-bold uppercase tracking-[0.12em] text-[#C9A84E] transition-colors hover:border-[#C9A84E] hover:bg-[#C9A84E]/5"
+                >
+                  AAAFX — Open Broker
+                </a>
               </div>
             </motion.div>
 

@@ -6,6 +6,7 @@
 
 // ── Step 1: Broker Signup (FREE) ───────────────────
 export const brokerLink = "https://dashboard.genesisfxmarkets.com/auth/register?ref=FRADEL185";
+export const brokerLinkAaafx = "https://app.aaafx.com/register?refLink=NTU4NQ==&refRm=11";
 
 // ── Step 2: Course Purchase ($250) ─────────────────
 export const courseLink = "/checkout?plan=course";
