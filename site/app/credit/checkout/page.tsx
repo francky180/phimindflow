@@ -74,7 +74,7 @@ function CheckoutContent() {
             Almost there.
           </h1>
           <p className="mt-3 text-[var(--text-secondary)]">
-            Confirm your details. You'll be redirected to secure checkout.
+            Confirm your details. You&apos;ll be redirected to secure checkout.
           </p>
         </div>
 

@@ -203,7 +203,7 @@ export default function CreditPage() {
                 Pick Your Path
               </h2>
               <p className="mt-4 text-[var(--text-secondary)] max-w-2xl mx-auto">
-                Start free with Analysis. Upgrade when you're ready to execute.
+                Start free with Analysis. Upgrade when you&apos;re ready to execute.
               </p>
             </div>
 
@@ -261,7 +261,7 @@ export default function CreditPage() {
             </h2>
             <p className="mt-6 text-[var(--text-secondary)] max-w-2xl mx-auto leading-relaxed">
               Good credit opens capital. Trading builds capital. Together they build wealth.
-              That's why Phimindflow runs both pillars under one roof.
+              That&apos;s why Phimindflow runs both pillars under one roof.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
               <Link

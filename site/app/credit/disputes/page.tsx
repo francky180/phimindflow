@@ -419,7 +419,7 @@ function DisputeLettersPage() {
                   </h2>
                 </div>
                 <p className="text-sm text-[var(--muted)] mb-4">
-                  These items were found in your uploaded credit report. Enter your name and address below, pick your round, and we'll generate dispute letters for ALL items to ALL 3 bureaus at once.
+                  These items were found in your uploaded credit report. Enter your name and address below, pick your round, and we&apos;ll generate dispute letters for ALL items to ALL 3 bureaus at once.
                 </p>
 
                 {/* Items list */}
