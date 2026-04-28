@@ -302,6 +302,20 @@ export default function Home() {
                       <path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </motion.a>
+                  <motion.a
+                    href="https://ai-system-factory.vercel.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.03, y: -2 }}
+                    whileTap={{ scale: 0.97 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 20 }}
+                    className="inline-flex items-center gap-2.5 rounded-2xl border border-[rgba(201,168,78,0.4)] px-8 py-4 text-[13px] font-semibold uppercase tracking-[0.12em] text-[#C9A84E] transition-all duration-300 hover:border-[#C9A84E] hover:shadow-[0_4px_20px_rgba(201,168,78,0.15)] hover:bg-[rgba(201,168,78,0.05)]"
+                  >
+                    Start Your Business
+                    <svg viewBox="0 0 16 16" fill="none" className="h-3.5 w-3.5">
+                      <path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </motion.a>
                 </div>
                 <p className="text-[12px] text-[#666666]">Free &middot; Instant access &middot; Unlocks Course + Management</p>
               </motion.div>

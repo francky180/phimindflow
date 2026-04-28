@@ -7,9 +7,10 @@ import { motion, AnimatePresence } from "motion/react";
 import { brokerLink } from "./constants";
 
 const pillars = [
-  { label: "Trade", href: "/" },
-  { label: "Credit", href: "/credit" },
-  { label: "Learn", href: "/credit/learn" },
+  { label: "Trade", href: "/", external: false },
+  { label: "Credit", href: "/credit", external: false },
+  { label: "Business", href: "https://ai-system-factory.vercel.app", external: true },
+  { label: "Learn", href: "/learn", external: false },
 ] as const;
 
 export default function Navbar() {
@@ -47,21 +48,24 @@ export default function Navbar() {
 
         {/* Desktop pillars */}
         <nav className="hidden items-center gap-9 md:flex">
-          {pillars.map((p) => (
-            <Link
-              key={p.label}
-              href={p.href}
-              className={`relative text-[11px] font-semibold uppercase tracking-[0.18em] transition-colors duration-300 ${
-                isActive(p.href)
-                  ? "text-[#C9A84E]"
-                  : "text-[#A0A0A0] hover:text-[#C9A84E]"
-              } after:absolute after:-bottom-1 after:left-0 after:h-px after:bg-[rgba(201,168,78,0.6)] after:transition-all after:duration-300 ${
-                isActive(p.href) ? "after:w-full" : "after:w-0 hover:after:w-full"
-              }`}
-            >
-              {p.label}
-            </Link>
-          ))}
+          {pillars.map((p) => {
+            const className = `relative text-[11px] font-semibold uppercase tracking-[0.18em] transition-colors duration-300 ${
+              !p.external && isActive(p.href)
+                ? "text-[#C9A84E]"
+                : "text-[#A0A0A0] hover:text-[#C9A84E]"
+            } after:absolute after:-bottom-1 after:left-0 after:h-px after:bg-[rgba(201,168,78,0.6)] after:transition-all after:duration-300 ${
+              !p.external && isActive(p.href) ? "after:w-full" : "after:w-0 hover:after:w-full"
+            }`;
+            return p.external ? (
+              <a key={p.label} href={p.href} target="_blank" rel="noopener noreferrer" className={className}>
+                {p.label}
+              </a>
+            ) : (
+              <Link key={p.label} href={p.href} className={className}>
+                {p.label}
+              </Link>
+            );
+          })}
         </nav>
 
         {/* CTA — adapts to active pillar */}
@@ -110,18 +114,32 @@ export default function Navbar() {
             className="overflow-hidden border-t border-[#1E1E1E] bg-[rgba(10,10,10,0.95)] backdrop-blur-xl md:hidden"
           >
             <div className="flex flex-col gap-5 px-6 py-8">
-              {pillars.map((p) => (
-                <Link
-                  key={p.label}
-                  href={p.href}
-                  onClick={() => setOpen(false)}
-                  className={`text-sm font-semibold uppercase tracking-[0.15em] transition ${
-                    isActive(p.href) ? "text-[#C9A84E]" : "text-[#A0A0A0] hover:text-[#C9A84E]"
-                  }`}
-                >
-                  {p.label}
-                </Link>
-              ))}
+              {pillars.map((p) => {
+                const mobileClass = `text-sm font-semibold uppercase tracking-[0.15em] transition ${
+                  !p.external && isActive(p.href) ? "text-[#C9A84E]" : "text-[#A0A0A0] hover:text-[#C9A84E]"
+                }`;
+                return p.external ? (
+                  <a
+                    key={p.label}
+                    href={p.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setOpen(false)}
+                    className={mobileClass}
+                  >
+                    {p.label}
+                  </a>
+                ) : (
+                  <Link
+                    key={p.label}
+                    href={p.href}
+                    onClick={() => setOpen(false)}
+                    className={mobileClass}
+                  >
+                    {p.label}
+                  </Link>
+                );
+              })}
               {pathname?.startsWith("/credit") ? (
                 <Link
                   href="/credit/analyze"
