@@ -71,6 +71,9 @@ function LoginForm() {
           Create your free account
         </Link>
       </p>
+      <p className="text-center text-xs text-[var(--muted)]">
+        <Link href="/credit/forgot" className="hover:text-[var(--gold)]">Forgot password?</Link>
+      </p>
     </form>
   );
 }

@@ -40,6 +40,13 @@ export default async function DashboardLayout({ children }: { children: React.Re
         <DashboardNav />
         <main className="min-w-0 flex-1">{children}</main>
       </div>
+      <footer className="border-t border-[var(--border)] px-6 py-6 text-center text-[10px] text-[var(--muted)]">
+        <Link href="/credit/legal/privacy" className="hover:text-[var(--gold)]">Privacy</Link>
+        <span className="mx-2">·</span>
+        <Link href="/credit/legal/terms" className="hover:text-[var(--gold)]">Terms</Link>
+        <span className="mx-2">·</span>
+        <Link href="/credit/legal/croa" className="hover:text-[var(--gold)]">CROA Disclosure</Link>
+      </footer>
     </div>
   );
 }

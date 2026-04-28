@@ -123,27 +123,27 @@ export async function deleteDispute(id: string) {
   return { ok: true };
 }
 
-// FILES
-export async function uploadFile(formData: FormData) {
+// FILES — client uploads directly to Supabase Storage (bypasses Vercel 4.5MB body limit).
+// Server action only records metadata after the upload completes.
+export async function recordUploadedFile(meta: {
+  file_path: string;
+  file_name: string;
+  category?: string;
+  size_bytes?: number;
+  mime_type?: string;
+}) {
   const { supabase, userId } = await getUserId();
-  const file = formData.get("file") as File;
-  if (!file || !file.size) return { error: "No file selected." };
-  const category = (formData.get("category") as string) || "other";
-  const safeName = file.name.replace(/[^\w.\-]+/g, "_");
-  const path = `${userId}/${Date.now()}-${safeName}`;
-  const { error: upErr } = await supabase.storage
-    .from("credit-files")
-    .upload(path, file, { contentType: file.type, upsert: false });
-  if (upErr) return { error: upErr.message };
-  const { error: dbErr } = await supabase.from("credit_files").insert({
+  // Verify the path is in the user's folder (defense in depth)
+  if (!meta.file_path.startsWith(`${userId}/`)) return { error: "Invalid file path." };
+  const { error } = await supabase.from("credit_files").insert({
     user_id: userId,
-    file_path: path,
-    file_name: file.name,
-    category,
-    size_bytes: file.size,
-    mime_type: file.type,
+    file_path: meta.file_path,
+    file_name: meta.file_name,
+    category: meta.category ?? "other",
+    size_bytes: meta.size_bytes ?? null,
+    mime_type: meta.mime_type ?? null,
   });
-  if (dbErr) return { error: dbErr.message };
+  if (error) return { error: error.message };
   revalidatePath("/credit/dashboard/files");
   revalidatePath("/credit/dashboard");
   return { ok: true };

@@ -100,6 +100,12 @@ function SignupForm() {
           Sign in
         </Link>
       </p>
+      <p className="mt-2 text-center text-[10px] text-[var(--muted)]">
+        By creating an account you agree to our{" "}
+        <Link href="/credit/legal/terms" className="hover:text-[var(--gold)]">Terms</Link>,{" "}
+        <Link href="/credit/legal/privacy" className="hover:text-[var(--gold)]">Privacy Policy</Link>, and{" "}
+        <Link href="/credit/legal/croa" className="hover:text-[var(--gold)]">CROA Disclosure</Link>.
+      </p>
     </form>
   );
 }
