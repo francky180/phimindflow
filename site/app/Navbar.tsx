@@ -70,14 +70,22 @@ export default function Navbar() {
 
         {/* CTA — adapts to active pillar */}
         {pathname?.startsWith("/credit") ? (
-          <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }} className="hidden md:inline-flex">
+          <div className="hidden items-center gap-4 md:inline-flex">
             <Link
-              href="/credit/analyze"
-              className="gold-btn rounded-full bg-[#C9A84E] px-6 py-2.5 text-[11px] font-bold uppercase tracking-[0.18em] text-[#0a0a0e] transition-shadow duration-300 hover:shadow-[0_4px_20px_rgba(201,168,78,0.3)]"
+              href="/credit/login"
+              className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#A0A0A0] transition-colors duration-300 hover:text-[#C9A84E]"
             >
-              Free Analysis
+              Sign in
             </Link>
-          </motion.div>
+            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
+              <Link
+                href="/credit/signup"
+                className="gold-btn rounded-full bg-[#C9A84E] px-6 py-2.5 text-[11px] font-bold uppercase tracking-[0.18em] text-[#0a0a0e] transition-shadow duration-300 hover:shadow-[0_4px_20px_rgba(201,168,78,0.3)]"
+              >
+                Free Dashboard
+              </Link>
+            </motion.div>
+          </div>
         ) : (
           <motion.a
             href={brokerLink}
@@ -141,13 +149,22 @@ export default function Navbar() {
                 );
               })}
               {pathname?.startsWith("/credit") ? (
-                <Link
-                  href="/credit/analyze"
-                  onClick={() => setOpen(false)}
-                  className="gold-btn mt-2 inline-flex w-fit rounded-full bg-[#C9A84E] px-6 py-3 text-[11px] font-bold uppercase tracking-[0.18em] text-[#0a0a0e]"
-                >
-                  Free Credit Analysis
-                </Link>
+                <div className="mt-2 flex flex-col gap-3">
+                  <Link
+                    href="/credit/signup"
+                    onClick={() => setOpen(false)}
+                    className="gold-btn inline-flex w-fit rounded-full bg-[#C9A84E] px-6 py-3 text-[11px] font-bold uppercase tracking-[0.18em] text-[#0a0a0e]"
+                  >
+                    Free Dashboard
+                  </Link>
+                  <Link
+                    href="/credit/login"
+                    onClick={() => setOpen(false)}
+                    className="text-sm font-semibold uppercase tracking-[0.15em] text-[#A0A0A0] hover:text-[#C9A84E]"
+                  >
+                    Sign in
+                  </Link>
+                </div>
               ) : (
                 <a
                   href={brokerLink}

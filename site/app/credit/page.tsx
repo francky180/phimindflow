@@ -126,18 +126,21 @@ export default function CreditPage() {
 
             <div className="mt-10 flex flex-col items-center gap-4 w-full sm:flex-row sm:justify-center">
               <Link
-                href="/credit/analyze"
+                href="/credit/signup"
                 className="gold-btn w-full sm:w-auto rounded-xl bg-[var(--gold)] px-10 py-4 text-base font-bold text-[#0a0a0e] tracking-wide transition-all hover:bg-[var(--gold-light)] hover:shadow-[0_20px_60px_rgba(201,168,78,0.25)] hover:scale-[1.02]"
               >
-                Free Credit Analysis
+                Open Free Dashboard
               </Link>
               <Link
                 href="#pricing"
                 className="w-full sm:w-auto rounded-xl border border-[var(--gold)]/30 bg-transparent px-10 py-4 text-base font-semibold text-[var(--gold)] tracking-wide transition-all hover:border-[var(--gold)]/60 hover:bg-[var(--gold-dim)] hover:scale-[1.02]"
               >
-                See Pricing
+                See Done-For-You Tiers
               </Link>
             </div>
+            <p className="mt-4 text-[11px] text-[var(--muted)]">
+              Free forever &middot; <Link href="/credit/login" className="text-[var(--gold)] hover:underline">Already have an account? Sign in</Link>
+            </p>
 
             <div className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] text-[var(--muted)] tracking-wide">
               <span>FCRA compliant</span>
