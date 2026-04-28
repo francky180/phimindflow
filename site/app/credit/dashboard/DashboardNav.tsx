@@ -9,6 +9,7 @@ const LINKS = [
   { href: "/credit/dashboard/items", label: "Negative Items" },
   { href: "/credit/dashboard/disputes", label: "Dispute Letters" },
   { href: "/credit/dashboard/send", label: "Send Letters", cta: true },
+  { href: "/credit/dashboard/how-to-send", label: "How to Send", info: true },
   { href: "/credit/dashboard/files", label: "Files" },
   { href: "/credit/dashboard/profile", label: "Profile" },
 ];
@@ -32,6 +33,23 @@ export default function DashboardNav() {
                   }`}
                 >
                   <span>📬</span>
+                  {l.label}
+                </Link>
+              </li>
+            );
+          }
+          if ("info" in l && l.info) {
+            return (
+              <li key={l.href} className="shrink-0">
+                <Link
+                  href={l.href}
+                  className={`flex items-center gap-2 whitespace-nowrap rounded-lg px-4 py-2.5 text-[11px] font-semibold uppercase tracking-[0.14em] transition ${
+                    active
+                      ? "bg-[var(--gold-dim)] text-[var(--gold)]"
+                      : "text-[var(--gold)] hover:bg-[rgba(201,168,78,0.05)]"
+                  }`}
+                >
+                  <span>📖</span>
                   {l.label}
                 </Link>
               </li>

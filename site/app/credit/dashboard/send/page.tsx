@@ -39,6 +39,33 @@ export default async function SendLettersPage() {
         </p>
       </header>
 
+      {/* HARD-WIRED REMINDER — appears every time someone opens this page */}
+      <section className="rounded-2xl border border-red-500/40 bg-red-500/5 p-5">
+        <div className="flex items-start gap-3">
+          <div className="text-2xl">⚠️</div>
+          <div className="flex-1">
+            <h3 className="text-sm font-bold text-red-300">REQUIRED with every letter — or the bureau ignores it</h3>
+            <p className="mt-1 text-[13px] text-[var(--text-secondary)]">
+              Every dispute envelope must include <strong className="text-[var(--text)]">(1)</strong> photo ID copy, <strong className="text-[var(--text)]">(2)</strong> SSN proof (last 4 visible), and <strong className="text-[var(--text)]">(3)</strong> proof of address dated within 60 days. Without all three, the bureau marks your dispute &quot;frivolous&quot; and refuses to investigate.
+            </p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              <Link
+                href="/credit/dashboard/how-to-send"
+                className="rounded-full border border-[var(--border)] px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--gold)] transition hover:border-[var(--gold)]/40"
+              >
+                📖 Read the full guide
+              </Link>
+              <Link
+                href="/credit/dashboard/files"
+                className="rounded-full border border-[var(--border)] px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--text-secondary)] transition hover:border-[var(--gold)]/40 hover:text-[var(--gold)]"
+              >
+                📎 Upload your ID + proofs
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* LetterStream banner */}
       <section className="rounded-2xl border border-[var(--gold)]/30 bg-gradient-to-br from-[rgba(201,168,78,0.08)] to-transparent p-6">
         <div className="flex items-start gap-4">
