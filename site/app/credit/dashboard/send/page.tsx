@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
+import CopyButton from "./CopyButton";
 
 export const dynamic = "force-dynamic";
 
@@ -43,13 +44,21 @@ export default async function SendLettersPage() {
         <div className="flex items-start gap-4">
           <div className="text-3xl">📬</div>
           <div className="flex-1">
-            <h2 className="text-lg font-bold text-[var(--gold)]">LetterStream — Certified Mail Automation</h2>
+            <h2 className="text-lg font-bold text-[var(--gold)]">Mail your letters certified — $5–7 each</h2>
             <p className="mt-2 text-sm text-[var(--text-secondary)]">
-              We&apos;re finalizing the LetterStream API connection. Once live, you&apos;ll click <strong className="text-[var(--gold)]">Send</strong> next to any dispute and we&apos;ll print + USPS-mail it certified to the bureau, with tracking auto-saved here. <strong className="text-[var(--gold)]">~$5–7 per certified letter.</strong>
+              Click <strong className="text-[var(--gold)]">Send via LetterStream</strong> next to any letter below. We&apos;ll open LetterStream in a new tab — copy your letter text, paste it in, choose <strong className="text-[var(--gold)]">Certified Mail</strong>, enter the bureau address (we show it for you), and pay. They print it, mail it USPS-certified, and you get tracking.
             </p>
             <p className="mt-3 text-[11px] text-[var(--muted)]">
-              Status: API request sent · Awaiting bureau-grade approval · ETA 1–2 business days
+              One-click full automation arriving in 1–2 business days (LetterStream API approval pending). Until then, the manual flow takes ~60 seconds per letter.
             </p>
+            <a
+              href="https://www.letterstream.com/ls/signup"
+              target="_blank"
+              rel="noreferrer"
+              className="mt-4 inline-flex items-center gap-2 rounded-full border border-[rgba(201,168,78,0.4)] px-5 py-2.5 text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--gold)] transition hover:border-[var(--gold)] hover:bg-[rgba(201,168,78,0.08)]"
+            >
+              Don&apos;t have a LetterStream account? Create one (free) ↗
+            </a>
           </div>
         </div>
       </section>
@@ -110,14 +119,21 @@ export default async function SendLettersPage() {
                     )}
                   </div>
                   <div className="flex flex-col gap-2 sm:items-end">
-                    <button
-                      type="button"
-                      disabled
-                      title="LetterStream integration coming soon — will print + USPS-mail certified, ~$5–7/letter, with auto-saved tracking."
-                      className="cursor-not-allowed rounded-full bg-[var(--gold)] px-5 py-2.5 text-[11px] font-bold uppercase tracking-[0.14em] text-[#0a0a0e] opacity-60"
+                    <a
+                      href="https://www.letterstream.com/ls/newjob?action=start"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="rounded-full bg-[var(--gold)] px-5 py-2.5 text-[11px] font-bold uppercase tracking-[0.14em] text-[#0a0a0e] transition hover:shadow-[0_4px_20px_rgba(201,168,78,0.3)]"
                     >
-                      📬 Send via LetterStream
-                    </button>
+                      📬 Send via LetterStream ↗
+                    </a>
+                    <CopyButton text={d.letter_text || ""} label="Copy letter" />
+                    {bureau && (
+                      <CopyButton
+                        text={`${bureau.name}\n${bureau.address}`}
+                        label="Copy address"
+                      />
+                    )}
                     <a
                       href="https://www.consumerfinance.gov/complaint/"
                       target="_blank"

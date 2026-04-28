@@ -94,21 +94,21 @@ export default async function DisputesPage() {
               </summary>
               <pre className="mt-4 max-h-96 overflow-auto whitespace-pre-wrap rounded-xl border border-[var(--border)] bg-[rgba(0,0,0,0.4)] p-4 font-mono text-[11px] leading-relaxed text-[var(--text-secondary)]">{d.letter_text}</pre>
               <div className="mt-4 flex flex-wrap items-center gap-3">
-                <button
-                  type="button"
-                  disabled
-                  title="LetterStream integration coming soon — we'll mail your letter certified via USPS, $5–7/letter, with auto-saved tracking."
-                  className="cursor-not-allowed rounded-full bg-[var(--gold)] px-5 py-2 text-[11px] font-bold uppercase tracking-[0.14em] text-[#0a0a0e] opacity-60"
+                <a
+                  href="https://www.letterstream.com/ls/newjob?action=start"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-full bg-[var(--gold)] px-5 py-2 text-[11px] font-bold uppercase tracking-[0.14em] text-[#0a0a0e] transition hover:shadow-[0_4px_20px_rgba(201,168,78,0.3)]"
                 >
-                  Send via LetterStream — coming soon
-                </button>
+                  📬 Send via LetterStream ↗
+                </a>
                 <a
                   href="https://www.consumerfinance.gov/complaint/"
                   target="_blank"
                   rel="noreferrer"
                   className="rounded-full border border-[var(--border)] px-5 py-2 text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--text-secondary)] transition hover:border-[var(--gold)]/40 hover:text-[var(--gold)]"
                 >
-                  File CFPB Complaint ↗
+                  ⚖️ File CFPB Complaint ↗
                 </a>
                 <span className="text-[10px] text-[var(--muted)]">Use CFPB if a bureau ignores your dispute past 30 days.</span>
               </div>
