@@ -17,7 +17,7 @@ import { createHash, randomBytes } from "crypto";
 
 const BASE_URL =
   process.env.LETTERSTREAM_API_BASE_URL ||
-  "https://www.letterstream.com/ls/api";
+  "https://www.letterstream.com/apis";
 
 export type LetterStreamSender = {
   name: string;
@@ -95,6 +95,30 @@ function buildAuthArgs() {
   return { a: apiId, t, h };
 }
 
+function formatAddr(
+  a: LetterStreamRecipient | LetterStreamSender,
+  withDocId?: string,
+) {
+  // LetterStream colon-delimited address: doc_id:name1:name2:address1:address2:city:state:zip
+  // For "from" (sender) the doc_id is omitted.
+  const name1 = (a.name || "").split(/\s+/)[0] || a.name;
+  const name2 = (a.name || "").split(/\s+/).slice(1).join(" ") || "";
+  const parts = [
+    name1,
+    name2,
+    a.address1,
+    a.address2 || "",
+    a.city,
+    a.state,
+    a.zip,
+  ];
+  // strip colons from parts to avoid breaking the delimiter
+  const safe = parts.map((p) => String(p).replace(/[:|]/g, " "));
+  return withDocId
+    ? [withDocId.replace(/[^a-zA-Z0-9]/g, "").slice(0, 20), ...safe].join(":")
+    : safe.join(":");
+}
+
 export async function submitCertifiedMail(
   opts: SubmitJobOptions,
 ): Promise<SubmitJobResult> {
@@ -105,32 +129,43 @@ export async function submitCertifiedMail(
   form.append("t", auth.t);
   form.append("h", auth.h);
 
-  form.append("jobname", opts.jobName);
-  form.append("mailtype", opts.certified ? "certified" : "firstclass");
-  if (opts.electronicReturnReceipt) form.append("err", "1");
-  if (opts.duplex) form.append("duplex", "1");
-  if (opts.pageCount) form.append("pagecount", String(opts.pageCount));
+  // Required: unique 8–20 char job name
+  form.append("job", opts.jobName);
 
-  form.append("recipient_name", opts.recipient.name);
-  form.append("recipient_addr1", opts.recipient.address1);
-  if (opts.recipient.address2)
-    form.append("recipient_addr2", opts.recipient.address2);
-  form.append("recipient_city", opts.recipient.city);
-  form.append("recipient_state", opts.recipient.state);
-  form.append("recipient_zip", opts.recipient.zip);
+  // Mail type: certified (with electronic return receipt by default) or certnoerr
+  const mailtype = opts.certified
+    ? opts.electronicReturnReceipt === false
+      ? "certnoerr"
+      : "certified"
+    : "firstclass";
+  form.append("mailtype", mailtype);
 
-  form.append("sender_name", opts.sender.name);
-  form.append("sender_addr1", opts.sender.address1);
-  if (opts.sender.address2) form.append("sender_addr2", opts.sender.address2);
-  form.append("sender_city", opts.sender.city);
-  form.append("sender_state", opts.sender.state);
-  form.append("sender_zip", opts.sender.zip);
+  // Coversheet=Y because our PDFs aren't formatted to LetterStream's window envelopes
+  form.append("coversheet", "Y");
 
+  if (opts.duplex) form.append("duplex", "Y");
+  if (opts.pageCount) form.append("pages", String(opts.pageCount));
+
+  // doc_id must be unique alphanumeric ≤20 chars; derive from job name
+  const docId = (opts.jobName + Date.now().toString(36))
+    .replace(/[^a-zA-Z0-9]/g, "")
+    .slice(0, 20);
+
+  // Addresses go as colon-delimited strings
+  form.append("from", formatAddr(opts.sender));
+  form.append("to[]", formatAddr(opts.recipient, docId));
+
+  // JSON response (instead of XML)
+  form.append("responseformat", "json");
+  // debug=3 for verbose error messages
+  form.append("debug", "3");
+
+  // PDF goes as `single_file` field
   const filename = opts.pdfFilename || `${opts.jobName}.pdf`;
   const blob = new Blob([new Uint8Array(opts.pdf)], { type: "application/pdf" });
-  form.append("file", blob, filename);
+  form.append("single_file", blob, filename);
 
-  const res = await fetch(`${BASE_URL}/post.php`, {
+  const res = await fetch(`${BASE_URL}/`, {
     method: "POST",
     body: form,
   });
@@ -149,7 +184,7 @@ export async function getJobStatus(jobId: string): Promise<JobStatusResult> {
     jobid: jobId,
   });
 
-  const res = await fetch(`${BASE_URL}/getjobstatus.php?${params.toString()}`, {
+  const res = await fetch(`${BASE_URL}/?${params.toString()}&command=getjobstatus`, {
     method: "GET",
   });
 
@@ -167,27 +202,45 @@ export async function getJobStatus(jobId: string): Promise<JobStatusResult> {
 }
 
 function parseJobResponse(text: string): SubmitJobResult {
+  // LetterStream returns nested JSON like:
+  // { messages: { id, message: { type, code, details, batch, doc: [{id, job, cost}] } } }
+  // Older fallback: XML or plain "AUTHOK ..."/"BAD ..." strings.
   const parsed = tryParseJson(text);
   if (!parsed) {
-    return { ok: false, rawMessage: text, raw: text };
+    return { ok: false, rawMessage: text.slice(0, 500), raw: text };
   }
-  const code = pickField(parsed, ["code", "Code"]);
-  const jobId =
-    pickField(parsed, ["job_id", "jobid", "JobID", "id"]) ?? undefined;
-  const trackingId =
-    pickField(parsed, ["tracking_id", "trackingid", "TrackingID"]) ?? undefined;
-  const message =
-    pickField(parsed, ["message", "Message", "description"]) ?? undefined;
+
+  // Drill down to the inner message object
+  const messages = (parsed as Record<string, unknown>).messages as Record<string, unknown> | undefined;
+  const msg = messages?.message as Record<string, unknown> | undefined;
+  const inner = msg ?? (parsed as Record<string, unknown>);
+
+  const code = pickField(inner, ["code", "Code"]);
+  const details = pickField(inner, ["details", "Details", "message", "Message"]);
+
+  // doc may be array or single object
+  let jobId: string | undefined;
+  let docId: string | undefined;
+  const docVal = (inner as Record<string, unknown>).doc;
+  const firstDoc = Array.isArray(docVal)
+    ? (docVal[0] as Record<string, unknown> | undefined)
+    : (docVal as Record<string, unknown> | undefined);
+  if (firstDoc) {
+    jobId = pickField(firstDoc, ["job", "Job", "jobid", "JobID"]);
+    docId = pickField(firstDoc, ["id", "Id", "doc_id", "DocId"]);
+  }
+  jobId = jobId ?? pickField(inner, ["job_id", "jobid", "JobID", "id"]);
+  const trackingId = pickField(inner, ["tracking_id", "trackingid", "TrackingID"]);
 
   // LetterStream uses negative codes for status/info, fatal codes -900..-999
   const codeNum = code != null ? Number(code) : NaN;
   const fatal = !Number.isNaN(codeNum) && codeNum <= -900;
   return {
-    ok: !fatal,
+    ok: !fatal && !!jobId,
     jobId,
-    trackingId,
+    trackingId: trackingId ?? docId,
     rawCode: code,
-    rawMessage: message,
+    rawMessage: details,
     raw: parsed,
   };
 }
