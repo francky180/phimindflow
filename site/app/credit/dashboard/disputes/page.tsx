@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import { addDispute, deleteDispute } from "../actions";
+import { SendCertifiedButton } from "../send/SendCertifiedButton";
 
 export const dynamic = "force-dynamic";
 
@@ -94,14 +95,7 @@ export default async function DisputesPage() {
               </summary>
               <pre className="mt-4 max-h-96 overflow-auto whitespace-pre-wrap rounded-xl border border-[var(--border)] bg-[rgba(0,0,0,0.4)] p-4 font-mono text-[11px] leading-relaxed text-[var(--text-secondary)]">{d.letter_text}</pre>
               <div className="mt-4 flex flex-wrap items-center gap-3">
-                <a
-                  href="https://www.letterstream.com/ls/newjob?action=start"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="rounded-full bg-[var(--gold)] px-5 py-2 text-[11px] font-bold uppercase tracking-[0.14em] text-[#0a0a0e] transition hover:shadow-[0_4px_20px_rgba(201,168,78,0.3)]"
-                >
-                  📬 Send via LetterStream ↗
-                </a>
+                <SendCertifiedButton disputeId={d.id} />
                 <a
                   href="https://www.consumerfinance.gov/complaint/"
                   target="_blank"

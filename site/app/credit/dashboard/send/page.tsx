@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import CopyButton from "./CopyButton";
+import { SendCertifiedButton } from "./SendCertifiedButton";
 
 export const dynamic = "force-dynamic";
 
@@ -146,14 +147,10 @@ export default async function SendLettersPage() {
                     )}
                   </div>
                   <div className="flex flex-col gap-2 sm:items-end">
-                    <a
-                      href="https://www.letterstream.com/ls/newjob?action=start"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="rounded-full bg-[var(--gold)] px-5 py-2.5 text-[11px] font-bold uppercase tracking-[0.14em] text-[#0a0a0e] transition hover:shadow-[0_4px_20px_rgba(201,168,78,0.3)]"
-                    >
-                      📬 Send via LetterStream ↗
-                    </a>
+                    <SendCertifiedButton
+                      disputeId={d.id}
+                      className="rounded-full bg-[var(--gold)] px-5 py-2.5 text-[11px] font-bold uppercase tracking-[0.14em] text-[#0a0a0e] transition hover:shadow-[0_4px_20px_rgba(201,168,78,0.3)] disabled:opacity-60"
+                    />
                     <CopyButton text={d.letter_text || ""} label="Copy letter" />
                     {bureau && (
                       <CopyButton
