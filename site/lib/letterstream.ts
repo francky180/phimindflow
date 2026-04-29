@@ -84,8 +84,10 @@ function hashAuth(apiKey: string, uniqueId: string) {
 }
 
 function newUniqueId() {
-  // 13-char timestamp + 8 hex chars = 21 chars; well above the 12-char floor.
-  return Date.now().toString() + randomBytes(4).toString("hex");
+  // LetterStream spec: numeric 10–18 digits, never reused per error -957.
+  // 13-char ms timestamp + 4-digit random suffix = 17 digits, all numeric.
+  const suffix = String(Math.floor(Math.random() * 10000)).padStart(4, "0");
+  return Date.now().toString() + suffix;
 }
 
 function buildAuthArgs() {
