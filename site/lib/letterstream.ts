@@ -204,35 +204,68 @@ export async function getJobStatus(jobId: string): Promise<JobStatusResult> {
 }
 
 function parseJobResponse(text: string): SubmitJobResult {
-  // LetterStream returns nested JSON like:
-  // { messages: { id, message: { type, code, details, batch, doc: [{id, job, cost}] } } }
-  // Older fallback: XML or plain "AUTHOK ..."/"BAD ..." strings.
+  // LetterStream returns JSON like:
+  // {
+  //   apiid: "...",
+  //   message: [
+  //     { "@attributes": {type:"info"}, code: "-199", details: "AUTHOK..." },
+  //     { "@attributes": {type:"info"}, code: "-105", details: "SuccessTestMode",
+  //       batch: "...", quantity: "1", cost: "7.93",
+  //       doc: { id, job, cost, tracking } }
+  //   ]
+  // }
+  // Fallbacks: { messages: { message } } shape, or single message, or XML/plain text.
   const parsed = tryParseJson(text);
   if (!parsed) {
     return { ok: false, rawMessage: text.slice(0, 500), raw: text };
   }
 
-  // Drill down to the inner message object
-  const messages = (parsed as Record<string, unknown>).messages as Record<string, unknown> | undefined;
-  const msg = messages?.message as Record<string, unknown> | undefined;
-  const inner = msg ?? (parsed as Record<string, unknown>);
+  const root = parsed as Record<string, unknown>;
+  const messagesNode = root.messages as Record<string, unknown> | undefined;
+  const msgRaw = (messagesNode?.message ?? root.message) as unknown;
+  const messageList: Record<string, unknown>[] = Array.isArray(msgRaw)
+    ? (msgRaw as Record<string, unknown>[])
+    : msgRaw
+    ? [msgRaw as Record<string, unknown>]
+    : [root];
 
-  const code = pickField(inner, ["code", "Code"]);
-  const details = pickField(inner, ["details", "Details", "message", "Message"]);
+  // Find the most informative message: prefer one carrying a doc/job; else last error.
+  const withDoc = messageList.find(
+    (m) => m && (m as Record<string, unknown>).doc != null,
+  );
+  const errorMsg = [...messageList]
+    .reverse()
+    .find((m) => {
+      const c = pickField(m, ["code", "Code"]);
+      return c != null && Number(c) <= -900;
+    });
+  const target = withDoc ?? errorMsg ?? messageList[messageList.length - 1] ?? root;
+
+  const code = pickField(target, ["code", "Code"]);
+  const details = pickField(target, ["details", "Details", "message", "Message"]);
 
   // doc may be array or single object
   let jobId: string | undefined;
   let docId: string | undefined;
-  const docVal = (inner as Record<string, unknown>).doc;
+  let trackingFromDoc: string | undefined;
+  const docVal = (target as Record<string, unknown>).doc;
   const firstDoc = Array.isArray(docVal)
     ? (docVal[0] as Record<string, unknown> | undefined)
     : (docVal as Record<string, unknown> | undefined);
   if (firstDoc) {
     jobId = pickField(firstDoc, ["job", "Job", "jobid", "JobID"]);
     docId = pickField(firstDoc, ["id", "Id", "doc_id", "DocId"]);
+    trackingFromDoc = pickField(firstDoc, [
+      "tracking",
+      "Tracking",
+      "tracking_id",
+      "TrackingID",
+    ]);
   }
-  jobId = jobId ?? pickField(inner, ["job_id", "jobid", "JobID", "id"]);
-  const trackingId = pickField(inner, ["tracking_id", "trackingid", "TrackingID"]);
+  jobId = jobId ?? pickField(target, ["job_id", "jobid", "JobID", "id"]);
+  const trackingId =
+    trackingFromDoc ??
+    pickField(target, ["tracking", "tracking_id", "trackingid", "TrackingID"]);
 
   // LetterStream uses negative codes for status/info, fatal codes -900..-999
   const codeNum = code != null ? Number(code) : NaN;
