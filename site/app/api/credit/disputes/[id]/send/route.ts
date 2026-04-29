@@ -161,6 +161,7 @@ export async function POST(
   });
   const pdfBytes = pdfDoc.output("arraybuffer");
   const pdf = new Uint8Array(pdfBytes as ArrayBuffer);
+  const pageCount = pdfDoc.getNumberOfPages();
 
   const jobName = shortJobName(dispute.id);
 
@@ -174,6 +175,7 @@ export async function POST(
       sender,
       certified: true,
       electronicReturnReceipt: false,
+      pageCount,
     });
   } catch (e) {
     console.error("[dispute send] LetterStream submit threw", e);
