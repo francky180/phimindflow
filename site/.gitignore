@@ -42,3 +42,6 @@ next-env.d.ts
 
 .vercel
 .env*.local
+
+# Local-only PDF extraction (contains PII)
+scripts/_smartcredit-extracted.txt
