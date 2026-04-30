@@ -15,6 +15,9 @@ import { ASFCheckout, ASF_CHECKOUT_DURATION } from "./ASFCheckout";
 import { PhimindflowPaymentFlow, PMF_PAYMENT_DURATION } from "./PhimindflowPaymentFlow";
 import { CommentYesReel, COMMENT_YES_DURATION } from "./CommentYesReel";
 import { RebuildWalkthrough, REBUILD_DURATION } from "./RebuildWalkthrough";
+import { PaintingLeadFlow, PAINTING_FLOW_DURATION } from "./PaintingLeadFlow";
+import { StratOptimizerTour, STRAT_TOUR_DURATION } from "./StratOptimizerTour";
+import { CreditFlowDemo, CREDIT_FLOW_DURATION } from "./CreditFlowDemo";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -143,6 +146,30 @@ export const RemotionRoot: React.FC = () => {
         id="RebuildWalkthrough"
         component={RebuildWalkthrough}
         durationInFrames={REBUILD_DURATION}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="PaintingLeadFlow"
+        component={PaintingLeadFlow}
+        durationInFrames={PAINTING_FLOW_DURATION}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="StratOptimizerTour"
+        component={StratOptimizerTour}
+        durationInFrames={STRAT_TOUR_DURATION}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="CreditFlowDemo"
+        component={CreditFlowDemo}
+        durationInFrames={CREDIT_FLOW_DURATION}
         fps={30}
         width={1920}
         height={1080}
