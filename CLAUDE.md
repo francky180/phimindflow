@@ -1,4 +1,6 @@
 > **Base System Prompt**: See `C:/Users/franc/BRAIN/core/MASTER_PROMPT.md` (canonical, fused 2026-04-10) for the 15 Always-On Principles and 12 principle-grounded Rules. Those load first as identity — the project-specific rules below are overrides/extensions for this project only.
+>
+> **Workspace Contract** (also mandatory): `C:/Users/franc/Projects/SYSTEM_PROMPT.md` → `AGENTS.md` → `CLAUDE.md` (in that order). The project rules below extend, never override, the workspace contract.
 
 # PHIMINDFLOW CLAUDE SYSTEM
 
@@ -67,7 +69,7 @@ Required response structure:
 <!-- gitnexus:start -->
 # GitNexus — Code Intelligence
 
-This project is indexed by GitNexus as **phimindflow-site** (441 symbols, 481 relationships, 3 execution flows). Use the GitNexus MCP tools to understand code, assess impact, and navigate safely.
+This project is indexed by GitNexus as **phimindflow-site** (1337 symbols, 1877 relationships, 44 execution flows). Use the GitNexus MCP tools to understand code, assess impact, and navigate safely.
 
 > If any GitNexus tool warns the index is stale, run `npx gitnexus analyze` in terminal first.
 
