@@ -34,6 +34,29 @@ export default async function DashboardOverview() {
         <p className="mt-2 text-sm text-[var(--text-secondary)]">Your private command center for fixing your credit.</p>
       </header>
 
+      <section className="rounded-2xl border border-[var(--gold)]/30 bg-[rgba(228,182,76,0.04)] p-6">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex-1">
+            <div className="flex items-center gap-2">
+              <span className="text-xl">📊</span>
+              <h3 className="text-[11px] font-bold uppercase tracking-[0.22em] text-[var(--gold)]">Get your credit report</h3>
+            </div>
+            <p className="mt-2 text-sm text-[var(--text-secondary)]">
+              See all 3 bureaus in one place. Sign up at SmartCredit, pull your report, and download it here whenever you want — they refresh every 30 days.
+            </p>
+            <p className="mt-1 text-[11px] text-[var(--muted)]">$1 first month · then $24.95/mo · cancel anytime.</p>
+          </div>
+          <a
+            href="https://www.smartcredit.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center rounded-full bg-[var(--gold)] px-6 py-3 text-[11px] font-bold uppercase tracking-[0.14em] text-[#0a0a0e] transition hover:shadow-[0_4px_20px_rgba(228,182,76,0.3)] sm:flex-shrink-0"
+          >
+            Get Your Report ↗
+          </a>
+        </div>
+      </section>
+
       <section>
         <h2 className="mb-4 text-[11px] font-bold uppercase tracking-[0.22em] text-[var(--muted)]">Latest scores</h2>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
