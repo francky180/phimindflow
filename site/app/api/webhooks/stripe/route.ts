@@ -1,12 +1,14 @@
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { Resend } from 'resend';
+import crypto from 'node:crypto';
 
 export const runtime = 'nodejs';
 
 const GHL_API = 'https://services.leadconnectorhq.com';
 const TELEGRAM_LINK = 'https://t.me/+pxyoRYABMO9kYmFh';
 const SITE_URL = 'https://phimindflow.com';
+const META_GRAPH_VERSION = 'v21.0';
 
 function getStripe() {
   return new Stripe(process.env.STRIPE_SECRET_KEY!, { apiVersion: '2026-03-25.dahlia' });
@@ -130,6 +132,54 @@ async function updateGhlContact(email: string, product: string) {
   }
 }
 
+// ─── Meta CAPI: server-side Purchase event ──────────────────────────
+async function sendCAPIPurchase(opts: {
+  email: string;
+  value: number;
+  currency?: string;
+  eventId: string;
+  sourceUrl: string;
+}) {
+  const PIXEL_ID = process.env.META_PIXEL_ID;
+  const TOKEN = process.env.META_CAPI_ACCESS_TOKEN;
+  if (!PIXEL_ID || !TOKEN) return;
+
+  const hashedEmail = crypto
+    .createHash('sha256')
+    .update(opts.email.trim().toLowerCase())
+    .digest('hex');
+
+  const body = {
+    data: [
+      {
+        event_name: 'Purchase',
+        event_time: Math.floor(Date.now() / 1000),
+        event_id: opts.eventId,
+        action_source: 'website',
+        event_source_url: opts.sourceUrl,
+        user_data: { em: [hashedEmail] },
+        custom_data: {
+          currency: opts.currency || 'USD',
+          value: opts.value,
+        },
+      },
+    ],
+  };
+
+  try {
+    await fetch(
+      `https://graph.facebook.com/${META_GRAPH_VERSION}/${PIXEL_ID}/events?access_token=${TOKEN}`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      }
+    );
+  } catch {
+    // Non-blocking
+  }
+}
+
 // ─── Stripe webhook handler ─────────────────────────────────────────
 export async function POST(req: Request) {
   const body = await req.text();
@@ -167,6 +217,12 @@ export async function POST(req: Request) {
         }),
         updateGhlContact(email, product),
         notifyDiscordSale({ email, name, product, amount }),
+        sendCAPIPurchase({
+          email,
+          value: amount / 100,
+          eventId: session.id,
+          sourceUrl: SITE_URL,
+        }),
       ]);
     }
   }
