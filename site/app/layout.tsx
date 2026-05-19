@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import MetaPixel from "../components/MetaPixel";
+import Script from "next/script";
 import "./globals.css";
 
 const inter = Inter({
@@ -60,6 +61,12 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <MetaPixel />
+        <Script
+          src="https://analytics.brandjet.ai/api/script.js"
+          data-website-id="8d929ed9-ee65-4b60-be05-4364f6ea94cc"
+          data-domain="phimindflow.com"
+          strategy="afterInteractive"
+        />
         {children}
         <Analytics />
         <SpeedInsights />
